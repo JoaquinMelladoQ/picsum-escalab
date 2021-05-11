@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
-import { showMessage } from 'react-native-flash-message';
+import { 
+  StyleSheet, 
+  View, 
+  Text, 
+  SafeAreaView, 
+  TouchableOpacity 
+} from 'react-native';
+import AuthorList from '../components/AuthorList';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,10 +16,11 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
+  const [data, setData] = useState([]);
   
   const getDataFromApi = async () => {
     const { data, status } = await axios.get('https://picsum.photos/v2/list');
-    console.log({ data });
+    setData(data);
   };
 
   useEffect(() => {
@@ -25,7 +32,10 @@ const Home = () => {
       <View>
         <Text>Home</Text>
       </View>
-    </SafeAreaView>
+      <AuthorList 
+        data={data}
+      />
+   </SafeAreaView>
   )
 };
 
