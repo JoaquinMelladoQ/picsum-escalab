@@ -1,12 +1,12 @@
 import React from 'react';
 import { StatusBar, View, Text } from 'react-native';
-import Home from './screens/Home';
+import RootNavigation from './routes/Root';
 
 const App = () => {
   return (
     <>
       <StatusBar barStyle={'dark-content'} />
-      <Home />
+      <RootNavigation />
     </>
   )
 };
