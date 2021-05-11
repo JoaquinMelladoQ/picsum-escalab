@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import colors from '../configs/colors';
-import { useRoute, useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 
 
 const styles = StyleSheet.create({

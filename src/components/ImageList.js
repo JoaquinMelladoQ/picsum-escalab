@@ -1,20 +1,27 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import { useRoute } from '@react-navigation/core';
+import ImageUrl from './ImageUrl';
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
 })
 
 const ImageList = ({ 
   navigation,
 }) => {
-const { params: { url } } = useRoute();
-  //console.log({ url });
+  const { 
+    params: { url } 
+  } = useRoute();
+  console.log({ url });
   return (
-    <View style={styles.container}>
-      <Text>ImageList</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ImageUrl 
+        url={url}
+      />
+    </SafeAreaView>
   );
 };
 
