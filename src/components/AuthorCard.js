@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import colors from '../configs/colors';
+import { useRoute, useNavigation } from '@react-navigation/core';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -34,13 +36,19 @@ const AuthorCard = ({
   url, 
   urlFiltered,
 }) => {
-
+  const routes = { url }
+  const navigation = useNavigation();
+ // const urlPerAuthor = (author) => {
+    
+  //};
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity 
         style={styles.containerText}
-        onPress={() => {}}>
+        onPress={() => navigation.navigate('ImageList', {
+          url
+        })}>
           <Text style={styles.text}>{author}</Text>
       </TouchableOpacity>
     </SafeAreaView>

@@ -40,11 +40,13 @@ const AuthorList = ({ data }) => {
           }
         }) => {
           return (
-            <AuthorCard 
-              url={url}
-              author={author}
-              urlFiltered={urlFiltered}
-            />
+            <>
+              <AuthorCard 
+                url={url}
+                author={author}
+                urlFiltered={urlFiltered}
+              />
+            </>
           )
         }}
       />
