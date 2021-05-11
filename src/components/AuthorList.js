@@ -15,11 +15,13 @@ const styles = StyleSheet.create({
 });
 
 const AuthorList = ({ data }) => {
-  console.log({ data });
+  //console.log({ data });
 
   const authorFiltered = () => {
     const resultAuthorFiltered = data.map(arrayData => arrayData.author)
     //console.log(resultAuthorFiltered);
+//    const freshArrayAuthor = new Set(resultAuthorFiltered)
+    //console.log(freshArrayAuthor);
   };
   authorFiltered();
 
@@ -41,6 +43,7 @@ const AuthorList = ({ data }) => {
             <AuthorCard 
               url={url}
               author={author}
+              urlFiltered={urlFiltered}
             />
           )
         }}

@@ -29,8 +29,11 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={() => {}}>
+        <Text>Log in</Text>
+      </TouchableOpacity>
       <View>
-        <Text>Home</Text>
+        <Text>Photographers</Text>
       </View>
       <AuthorList 
         data={data}
