@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
   StyleSheet, 
-  View, 
-  Text, 
   FlatList,
   SafeAreaView,
 } from 'react-native';
@@ -15,19 +13,8 @@ const styles = StyleSheet.create({
 });
 
 const AuthorList = ({ data }) => {
-  //console.log({ data });
+  //console.log(data);
 
-  const authorFiltered = () => {
-    const resultAuthorFiltered = data.map(arrayData => arrayData.author)
-    //console.log(resultAuthorFiltered);
-//    const freshArrayAuthor = new Set(resultAuthorFiltered)
-    //console.log(freshArrayAuthor);
-  };
-  authorFiltered();
-
-  const urlFiltered = data.map(d => d.url)
-  //console.log(urlFiltered);
-  
   return (
     <SafeAreaView style={styles.container}>
       <FlatList 
@@ -35,7 +22,7 @@ const AuthorList = ({ data }) => {
         keyExtractor={({ id }) => id}
         renderItem={({
           item: {
-            url,
+            download_url,
             author,
           }
         }) => {
@@ -43,7 +30,7 @@ const AuthorList = ({ data }) => {
             <>
               <AuthorCard 
                 author={author}
-                url={url}
+                download_url={download_url}
               />
             </>
           )

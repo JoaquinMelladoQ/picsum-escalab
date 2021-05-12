@@ -8,7 +8,6 @@ import {
 import colors from '../configs/colors';
 import { useNavigation } from '@react-navigation/core';
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -33,10 +32,10 @@ const styles = StyleSheet.create({
 
 const AuthorCard = ({ 
   author, 
-  url, 
+  download_url
 }) => {
 
-  const routes = { url }
+  const routes = { download_url }
   const navigation = useNavigation();
 
   return (
@@ -44,7 +43,7 @@ const AuthorCard = ({
       <TouchableOpacity 
         style={styles.containerText}
         onPress={() => navigation.navigate('ImageList', {
-          url,
+          download_url
         })}>
           <Text style={styles.text}>{author}</Text>
       </TouchableOpacity>

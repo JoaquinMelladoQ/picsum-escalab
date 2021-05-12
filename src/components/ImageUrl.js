@@ -14,25 +14,22 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkBlue,
   },
   image: {
+    flex: 1,
     height: '100%',
     width: '100%',
   },
 });
 
-const ImageUrl = ({ url, source }) => {
-  //console.log({ url });
-  //console.log({ source });
-
-  const newArray = { url } 
-  console.log({ newArray });
-
+const ImageUrl = ({ download_url }) => {
+  //console.log(download_url);
   return (
     <>
       <View style={styles.container}>
         <Image 
+          source={{ uri: download_url }}
           style={styles.image}
-          source={{ uri: url }}
-          resizeMode="contain"
+          onError={(e) => console.log(e.nativeEvent.error) } 
+          resizeMode="cover"
         />
       </View>
     </>

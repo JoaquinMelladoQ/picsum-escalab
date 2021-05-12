@@ -8,34 +8,24 @@ import {
   TouchableOpacity 
 } from 'react-native';
 import AuthorList from '../components/AuthorList';
+import colors from '../configs/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.freshWhite,
   },
 });
 
 const Home = () => {
   const [data, setData] = useState([]);
-  //const [dataUrl, setDataUrl] = useState([]);
   
   const getDataFromApi = async () => {
-    const { data, status } = await axios.get('https://picsum.photos/v2/list');
+    const { data } = await axios.get('https://picsum.photos/v2/list');
     setData(data);
   };
 
-  //const getUrlData = () => {
-    //const urlData = data.reduce((urlType, data) => {
-      //return [...urlType, ...data.url]
-    //}, []);
-  
-    //const urlSet = new Set(urlData)
-    //setDataUrl({ dataUrl: [...urlSet] })
-  //};
-
-  //console.log(getUrlData());
-
-  useEffect(() => {
+   useEffect(() => {
     getDataFromApi();
   }, []);
 
