@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
 });
 
 const AuthorList = ({ data }) => {
-  //console.log(data);
 
   return (
     <SafeAreaView style={styles.container}>

@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 });
 
 const ImageUrl = ({ download_url }) => {
-  //console.log(download_url);
   return (
     <>
       <View style={styles.container}>

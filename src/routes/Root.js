@@ -2,17 +2,28 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeNavigation from './HomeStack';
+import LoginNavigator from './LoginStack';
+import { connect } from 'react-redux';
 
 const RootStack = createStackNavigator();
 
-const RootNavigation = () => {
+const RootNavigation = ({ isValidLogin }) => {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen name="HomeNavigator" component={HomeNavigation} />
+        { !isValidLogin ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
+        : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
+        }
       </RootStack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default RootNavigation;
+const mapStateToProps = globalState => {
+  return {
+    isValidLogin: globalState.loginReducer.valid,
+  };
+};
+
+export default connect(mapStateToProps)(RootNavigation);
+

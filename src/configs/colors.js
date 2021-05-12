@@ -3,6 +3,7 @@ const colors = {
   darkBlue: '#192a56',
   freshWhite: '#f5f6fa',
   softBlue: '#0097e6',
+  green: '#44bd32',
 };
 
 export default colors;
