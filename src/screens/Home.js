@@ -17,11 +17,23 @@ const styles = StyleSheet.create({
 
 const Home = () => {
   const [data, setData] = useState([]);
+  //const [dataUrl, setDataUrl] = useState([]);
   
   const getDataFromApi = async () => {
     const { data, status } = await axios.get('https://picsum.photos/v2/list');
     setData(data);
   };
+
+  //const getUrlData = () => {
+    //const urlData = data.reduce((urlType, data) => {
+      //return [...urlType, ...data.url]
+    //}, []);
+  
+    //const urlSet = new Set(urlData)
+    //setDataUrl({ dataUrl: [...urlSet] })
+  //};
+
+  //console.log(getUrlData());
 
   useEffect(() => {
     getDataFromApi();

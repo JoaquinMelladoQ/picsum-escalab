@@ -34,20 +34,17 @@ const styles = StyleSheet.create({
 const AuthorCard = ({ 
   author, 
   url, 
-  urlFiltered,
 }) => {
+
   const routes = { url }
   const navigation = useNavigation();
- // const urlPerAuthor = (author) => {
-    
-  //};
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity 
         style={styles.containerText}
         onPress={() => navigation.navigate('ImageList', {
-          url
+          url,
         })}>
           <Text style={styles.text}>{author}</Text>
       </TouchableOpacity>
