@@ -1,21 +1,27 @@
-const defaultState = {
+import { 
+  LOGIN,
+  LOGOUT,
+  LOADING,
+} from '../types/';
+
+const INITIAL_STATE = {
   loading: false,
   valid: undefined,
 };
 
-const login = (state = defaultState, action) => {
+const login = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'LOGIN_IN':
+    case LOGIN:
       return {
         ...state,
         valid: true,
       };
-    case 'LOGOUT':
+    case LOGOUT:
       return {
         ...state,
         valid: false,
       };
-    case 'LOADING':
+    case LOADING:
       return {
         ...state,
         loading: action.isLoading,

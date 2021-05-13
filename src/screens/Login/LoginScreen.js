@@ -1,32 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   StyleSheet, View,
   Text,TextInput,
   TouchableOpacity,
-  ScrollView,
   Image,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { login as loginAction, setLoading } from '../../redux/actions';
+import { login as loginAction } from '../../redux/actions';
 import { useNavigation } from '@react-navigation/core';
 import colors from '../../configs/colors';
 
 const styles = StyleSheet.create({
-  header: {
+  main: {
     flex: 1,
-    backgroundColor: colors.darkBlue,
+    backgroundColor: colors.freshWhite,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerText: {
-    margin: 10,
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: colors.freshWhite,
+  mainImage: {
+    width: '100%',
+    height: '100%',
   },
   titleContainer: {
     backgroundColor: colors.marineBlue,
-    borderRadius: 25,
+    borderRadius: 15,
     padding: 10,
   },
   titleInput: {
@@ -38,22 +35,42 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.darkBlue,
+    backgroundColor: colors.freshWhite,
     color: colors.freshWhite,
   },
   textInput: {
     width: '65%',
     padding: 10,
     borderWidth: 5,
-    color: colors.freshWhite,
-    borderColor: colors.freshWhite,
+    color: colors.darkBlue,
+    borderColor: colors.darkBlue,
     marginVertical: 10,
-    borderRadius: 25,
+    borderRadius: 10,
     fontSize: 19,
+  },
+  buttons: {
+    flexDirection: 'row',
   },
   loginButton: {
     marginTop: 30,
-    backgroundColor: colors.green,
+    backgroundColor: colors.softBlue,
+    //borderWidth: 5,
+    borderRadius: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    paddingHorizontal: 42,
+    marginBottom: 30,
+    margin: 5,
+  },
+  loginButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.freshWhite,
+  },
+  registerButton: {
+    marginTop: 30,
+    backgroundColor: 'transparent',
     borderWidth: 5,
     flexDirection: 'row',
     borderRadius: 45,
@@ -61,13 +78,12 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 30,
   },
-  loginButtonText: {
-    fontSize: 20,
+  registerButtonText: {
+    fontSize: 18,
     fontWeight: 'bold',
-    marginRight: 5,
   },
   inputFocusBorderColor: {
-    borderColor: colors.freshWhite,
+    borderColor: colors.softBlue,
   },
 });
 
@@ -92,17 +108,14 @@ const Login = ({
 
   return (
     <>
-      <View style={styles.header}>
+      <View style={styles.main}>
         <Image
-          style={{ width: '100%', height: '100%' }}
+          style={styles.mainImage}
           source={{ uri: 'https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1838&q=80' }}
           resizeMode="contain"
         />
       </View>
         <View style={styles.inputsContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleInput}>Usuario</Text>
-          </View>
           <TextInput
             placeholder="Usuario"
             autoCapitalize="none"
@@ -115,12 +128,9 @@ const Login = ({
               passwordInputRef.current.focus();
             }}
           />
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleInput}>Password</Text>
-          </View>
           <TextInput
             ref={passwordInputRef}
-            placeholder="Password"
+            placeholder="Contraseña"
             autoCapitalize="none"
             value={userPassword}
             onChangeText={password => updateUserPassword(password)}
@@ -131,11 +141,18 @@ const Login = ({
             onFocus={() => updateFocusPasswordInput(true)}
             onBlur={() => updateFocusPasswordInput(false)}
           />
-          <TouchableOpacity
-            onPress={() => loginCallback()}
-            style={styles.loginButton}>
-            <Text style={styles.loginButtonText}>Ingresar</Text>
-          </TouchableOpacity>
+          <View style={styles.buttons}>
+            <TouchableOpacity
+              onPress={() => loginCallback()}
+              style={styles.registerButton}>
+              <Text style={styles.registerButtonText}>Registrarse</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => loginCallback()}
+              style={styles.loginButton}>
+              <Text style={styles.loginButtonText}>Ingresar</Text>
+            </TouchableOpacity>
+          </View>
         </View>
     </>
   );
