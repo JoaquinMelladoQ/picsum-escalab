@@ -6,12 +6,11 @@ import {
 } from '../types';
 
 export const login = ({ user, password }) => {
-  //console.log({ user, password });
   return dispatch => {
     dispatch({ type: LOADING, isLoading: true });
 
     setTimeout(() => {
-      if (user === 'p' && password === 'i') {
+      if (user === 'p' && password === 'p') {
         AsyncStorage.setItem('user', user);
         AsyncStorage.setItem('password', password);
         dispatch({ type: LOGIN });

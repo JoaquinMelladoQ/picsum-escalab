@@ -5,6 +5,11 @@ const colors = {
   softBlue: '#0097e6',
   green: '#44bd32',
   midnightBlue: '#2c3e50',
+  clouds: '#ecf0f1',
+  summerSky: '#34ace0',
+  debilBlue: '#227093',
+  neonBlue: '#18dcff',
+  electionBlue: '#0984e3',
 };
 
 export default colors;
