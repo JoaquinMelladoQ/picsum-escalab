@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import AuthorList from '../components/AuthorList';
 import colors from '../configs/colors';
+import Dashboard from '../components/main/Dashboard';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,10 +32,8 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity onPress={() => {}}>
-        <Text>Log in</Text>
-      </TouchableOpacity>
-      <View>
+      <Dashboard />
+     <View>
         <Text>Photographers</Text>
       </View>
       <AuthorList 
