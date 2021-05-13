@@ -5,7 +5,6 @@ import {
   View, 
   Text, 
   SafeAreaView, 
-  TouchableOpacity 
 } from 'react-native';
 import AuthorList from '../components/AuthorList';
 import colors from '../configs/colors';
@@ -33,12 +32,7 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Dashboard />
-     <View>
-        <Text>Photographers</Text>
-      </View>
-      <AuthorList 
-        data={data}
-      />
+      <AuthorList data={data} />
    </SafeAreaView>
   )
 };

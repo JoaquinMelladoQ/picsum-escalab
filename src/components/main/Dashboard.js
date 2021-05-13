@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   TouchableOpacity,
   View,
@@ -8,6 +8,7 @@ import {
 import colors from '../../configs/colors';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/actions';
+import { useNavigation } from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,33 +30,27 @@ const styles = StyleSheet.create({
   },
 })
 
-export class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Dashboard = ({ logout }) => {
+  const navigation = useNavigation();
 
-  render() {
-    const { logout } = this.props;
-    //console.log({ logout });
-    return (
-      <>
-        <View style={styles.container}>
-          <View style={styles.buttonLogout}>
-            <TouchableOpacity 
-              onPress={() => {}}>
-              <Text style={styles.textLogout}>Perfil</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonLogout}>
-            <TouchableOpacity 
-              onPress={() => logout()}>
-              <Text style={styles.textLogout}>Salir</Text>
-            </TouchableOpacity>
-          </View>
+  return (
+    <>
+      <View style={styles.container}>
+        <View style={styles.buttonLogout}>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('Profile', {})}>
+            <Text style={styles.textLogout}>Mi perfil</Text>
+          </TouchableOpacity>
         </View>
-      </>
-    );
-  };
+        <View style={styles.buttonLogout}>
+          <TouchableOpacity 
+            onPress={() => logout()}>
+            <Text style={styles.textLogout}>Salir</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </>
+  );
 };
 
 const mapDispatchToProps = (dispatch) => {

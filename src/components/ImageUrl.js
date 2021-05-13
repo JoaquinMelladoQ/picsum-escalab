@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -20,19 +20,24 @@ const styles = StyleSheet.create({
   },
 });
 
-const ImageUrl = ({ download_url }) => {
-  return (
-    <>
-      <View style={styles.container}>
-        <Image 
-          source={{ uri: download_url }}
-          style={styles.image}
-          onError={(e) => console.log(e.nativeEvent.error) } 
-          resizeMode="cover"
-        />
-      </View>
-    </>
-  );
+export default class ImageUrl extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    const { download_url } = this.props;
+    return (
+      <>
+         <View style={styles.container}>
+          <Image 
+            source={{ uri: download_url }}
+            style={styles.image}
+            onError={(e) => console.log(e.nativeEvent.error) } 
+            resizeMode="cover"
+          />
+        </View> 
+      </>
+    );
+  };
 };
-
-export default ImageUrl;
