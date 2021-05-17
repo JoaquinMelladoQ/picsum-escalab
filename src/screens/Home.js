@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { 
-  StyleSheet, 
-  View, 
-  Text, 
-  SafeAreaView, 
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchApi } from '../redux/actions';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import AuthorList from '../components/AuthorList';
 import colors from '../configs/colors';
 import Dashboard from '../components/main/Dashboard';
@@ -18,22 +14,20 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  
-  const getDataFromApi = async () => {
-    const { data } = await axios.get('https://picsum.photos/v2/list');
-    setData(data);
-  };
+  const dispatch = useDispatch();
+  const apiReducer = useSelector(store => store.apiReducer.arrayData)
 
-   useEffect(() => {
-    getDataFromApi();
-  }, []);
+  useEffect(() => (
+    dispatch(fetchApi())
+  ), [])
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Dashboard />
-      <AuthorList data={data} />
-   </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.container}>
+        <Dashboard />
+        <AuthorList apiReducer={apiReducer} />
+     </SafeAreaView>
+    </>
   )
 };
 

@@ -18,12 +18,12 @@ export default class AuthorList extends Component {
   }
   
   render() {
-    const { data } = this.props;
+    const { apiReducer } = this.props;
     return (
       <>
        <SafeAreaView style={styles.container}>
         <FlatList 
-          data={data}
+          data={apiReducer}
           keyExtractor={({ id }) => id}
           renderItem={({
             item: {

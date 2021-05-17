@@ -67,7 +67,6 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = globalState => {
   return {
-    isLoadingActive: globalState.loginReducer.loading,
     valid: globalState.loginReducer.valid,
   };
 };
