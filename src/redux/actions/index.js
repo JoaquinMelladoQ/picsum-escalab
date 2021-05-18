@@ -14,7 +14,7 @@ export const login = ({ user, password }) => {
         AsyncStorage.setItem('password', password);
         dispatch({ type: LOGIN });
       }
-    }, 2000);
+    }, 1000);
   };
 };
 
@@ -30,6 +30,6 @@ export const fetchApi = () => async (dispatch, getState) => {
       payload: response.data
     })
   } catch (error) {
-    //console.log(error);
+    console.log(error);
   }
 };

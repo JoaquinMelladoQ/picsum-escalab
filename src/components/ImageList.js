@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   StyleSheet, 
   View, 
-  SafeAreaView, 
   TouchableOpacity,
   Text,
 } from 'react-native';
@@ -17,10 +16,11 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
+    padding: 5,
     borderRadius: 25,
     backgroundColor: colors.softBlue,
     alignSelf: 'center',
-    padding: 10,
+    marginTop: 40,
   },
   textButton: {
     fontSize: 20,
@@ -43,11 +43,11 @@ const ImageList = ({
   
   return (
     <>
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <TouchableOpacity 
           style={styles.button}
           onPress={() => navigation.pop()}>
-          <Text style={styles.textButton}>Go back</Text>
+          <Text style={styles.textButton}>Atras</Text>
         </TouchableOpacity>
         <View style={styles.image}>
           <ImageUrl 
@@ -55,7 +55,7 @@ const ImageList = ({
             source={{ uri: download_url }}
           />
         </View>
-      </SafeAreaView>
+      </View>
     </>
   );
 };

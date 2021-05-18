@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { 
   StyleSheet, 
   Text,
@@ -39,6 +39,7 @@ const AuthorCard = ({
   const navigation = useNavigation();
 
   return (
+    <>
     <SafeAreaView style={styles.container}>
       <TouchableOpacity 
         style={styles.containerText}
@@ -48,6 +49,7 @@ const AuthorCard = ({
           <Text style={styles.text}>{author}</Text>
       </TouchableOpacity>
     </SafeAreaView>
+    </>
   );
 };
 

@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApi } from '../redux/actions';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { 
+  StyleSheet, 
+  SafeAreaView, 
+} from 'react-native';
 import AuthorList from '../components/AuthorList';
 import colors from '../configs/colors';
 import Dashboard from '../components/main/Dashboard';
@@ -14,6 +17,7 @@ const styles = StyleSheet.create({
 });
 
 const Home = () => {
+
   const dispatch = useDispatch();
   const apiReducer = useSelector(store => store.apiReducer.arrayData)
 
@@ -25,8 +29,10 @@ const Home = () => {
     <>
       <SafeAreaView style={styles.container}>
         <Dashboard />
-        <AuthorList apiReducer={apiReducer} />
-     </SafeAreaView>
+        <AuthorList 
+          apiReducer={apiReducer} 
+        />
+      </SafeAreaView>
     </>
   )
 };

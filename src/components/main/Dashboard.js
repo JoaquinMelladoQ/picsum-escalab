@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  buttonLogout: {
+  button: {
     //borderWidth: 1
   },
-  textLogout: {
-    fontSize: 15,
+  textButton: {
+    fontSize: 18,
     fontWeight: 'bold',
     color: colors.freshWhite,
   },
@@ -32,20 +32,19 @@ const styles = StyleSheet.create({
 
 const Dashboard = ({ logout }) => {
   const navigation = useNavigation();
-
   return (
     <>
       <View style={styles.container}>
-        <View style={styles.buttonLogout}>
+        <View style={styles.button}>
           <TouchableOpacity 
             onPress={() => navigation.navigate('Profile', {})}>
-            <Text style={styles.textLogout}>Mi perfil</Text>
+            <Text style={styles.textButton}>Yo</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.buttonLogout}>
+        <View style={styles.button}>
           <TouchableOpacity 
             onPress={() => logout()}>
-            <Text style={styles.textLogout}>Salir</Text>
+            <Text style={styles.textButton}>Salir</Text>
           </TouchableOpacity>
         </View>
       </View>

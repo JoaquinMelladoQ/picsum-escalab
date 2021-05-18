@@ -18,7 +18,7 @@ export default class AuthorList extends Component {
   }
   
   render() {
-    const { apiReducer } = this.props;
+    const { apiReducer, color } = this.props;
     return (
       <>
        <SafeAreaView style={styles.container}>
@@ -34,6 +34,7 @@ export default class AuthorList extends Component {
             return (
               <>
                 <AuthorCard 
+                  color={color}
                   author={author}
                   download_url={download_url}
                 />

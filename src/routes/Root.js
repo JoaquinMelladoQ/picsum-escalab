@@ -11,8 +11,10 @@ const RootNavigation = ({ isValidLogin }) => {
   return (
     <NavigationContainer>
       <RootStack.Navigator headerMode="none">
-        { !isValidLogin ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
-        : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
+        { 
+          !isValidLogin 
+            ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
+            : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
         }
       </RootStack.Navigator>
     </NavigationContainer>
