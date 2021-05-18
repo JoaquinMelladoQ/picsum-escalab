@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import {
   StyleSheet, 
   View,
-  TextInput,
+  Text,
   ImageBackground,
 } from 'react-native';
 import colors from '../../configs/colors';
@@ -18,35 +18,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  inputsContainer: {
-    paddingTop: '90%',
-    alignItems: 'center',
-    backgroundColor: 'transparent',
+  containerWelcomeText: {
+    marginTop: '30%',
+    paddingVertical: '50%',
+  },
+  textWelcome: {
+    fontWeight: 'bold',
     color: colors.freshWhite,
-  },
-  textInput: {
-    width: '65%',
-    padding: 10,
-    borderWidth: 5,
-    color: colors.darkBlue,
-    backgroundColor: colors.clouds,
-    borderColor: colors.midnightBlue,
-    marginVertical: 10,
-    borderRadius: 10,
-    fontSize: 19,
-  },
-  inputFocusColor: {
-    borderColor: colors.freshWhite,
+    fontSize: 30,
+    textAlign: 'center',
   },
 });
 
 const Login = () => {
-  const [userName, setUserName] = useState('');
-  const [userPassword, setUserPassword] = useState('');
-  const [focusNameInput, setFocusNameInput] = useState(false);
-  const [focusPasswordInput, setFocusPasswordInput] = useState(false);
-
-  const passwordInputRef = useRef(null);
 
   const image = { uri: 'https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1838&q=80' }
 
@@ -56,39 +40,11 @@ const Login = () => {
           <ImageBackground 
             source={image}
             style={styles.mainImage}
-            blurRadius={12}
-          >
-            <View style={styles.inputsContainer}>
-              <TextInput
-                placeholder="Nombre de usuario"
-                autoCapitalize="none"
-                value={userName}
-                onChangeText={name => setUserName(name)}
-                style={[styles.textInput,focusNameInput && styles.inputFocusColor,]}
-                onFocus={() => setFocusNameInput(true)}
-                onBlur={() => {
-                  setFocusNameInput(false);
-                  passwordInputRef.current.focus();
-                }}
-              />
-              <TextInput
-                ref={passwordInputRef}
-                placeholder="Tu contraseña"
-                autoCapitalize="none"
-                value={userPassword}
-                onChangeText={password => setUserPassword(password)}
-                style={[
-                  styles.textInput,
-                  focusPasswordInput && styles.inputFocusColor,
-                ]}
-                onFocus={() => setFocusPasswordInput(true)}
-                onBlur={() => setFocusPasswordInput(false)}
-              />
-              <LoginButton 
-                userName={userName}
-                userPassword={userPassword}
-              />
+            blurRadius={15}>
+            <View style={styles.containerWelcomeText}>
+              <Text style={styles.textWelcome}>Te damos la bienvenida a Picsum</Text>
             </View>
+              <LoginButton />
           </ImageBackground>
         </View>
     </>

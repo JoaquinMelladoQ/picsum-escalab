@@ -8,14 +8,13 @@ import colors from '../../../configs/colors';
 
 const styles = StyleSheet.create({
   registerButton: {
-    marginTop: 30,
+    marginTop: 10,
     backgroundColor: 'transparent',
     borderWidth: 5,
     borderColor: colors.freshWhite,
-    flexDirection: 'row',
     borderRadius: 45,
     alignItems: 'center',
-    padding: 20,
+    padding: 15,
     marginBottom: 30,
   },
   registerButtonText: {
@@ -31,7 +30,7 @@ const RegisterButton = () => {
       <TouchableOpacity
         onPress={() => {}}
         style={styles.registerButton}>
-        <Text style={styles.registerButtonText}>Registrarse</Text>
+        <Text style={styles.registerButtonText}>Registrate</Text>
       </TouchableOpacity>
     </>
   );

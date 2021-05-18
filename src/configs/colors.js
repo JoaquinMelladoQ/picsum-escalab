@@ -10,6 +10,8 @@ const colors = {
   debilBlue: '#227093',
   neonBlue: '#18dcff',
   electionBlue: '#0984e3',
+  google: '#4285F4',
+  facebook: '#3b5998',
 };
 
 export default colors;
