@@ -5,11 +5,9 @@ import {
   compose
 } from 'redux';
 import thunk from 'redux-thunk';
-import loginReducer from './reducers/login';
 import apiReducer from './reducers/api';
 
 const rootReducer = combineReducers({
-  loginReducer,
   apiReducer
 });
 

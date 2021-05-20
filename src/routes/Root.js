@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeNavigation from './HomeStack';
 import LoginNavigator from './LoginStack';
-import { connect } from 'react-redux';
+import { AuthContext } from '../contexts/firebase/AuthProvider';
+import auth from '@react-native-firebase/auth';
 
 const RootStack = createStackNavigator();
 
-const RootNavigation = ({ isValidLogin }) => {
+const RootNavigation = () => {
+  const {user, setUser} = useContext(AuthContext);
+  const [initializing, setInitializing] = useState(true);
+
+  const onAuthStateChanged = (user) => {
+    setUser(user)
+    if (initializing) setInitializing(false)
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, [])
+
+  if (initializing) return null;
+
   return (
     <NavigationContainer>
       <RootStack.Navigator headerMode="none">
         { 
-          !isValidLogin 
-            ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
-            : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
+          !user 
+          ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
+          : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
         }
       </RootStack.Navigator>
     </NavigationContainer>
   );
 };
 
-const mapStateToProps = globalState => {
-  return {
-    isValidLogin: globalState.loginReducer.valid,
-  };
-};
-
-export default connect(mapStateToProps)(RootNavigation);
-
+export default RootNavigation;

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -8,11 +8,10 @@ import {
   Modal,
   Button,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { login as loginAction } from '../../../redux/actions';
 import colors from '../../../configs/colors';
 import RegisterButton from './RegisterButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { AuthContext } from '../../../contexts/firebase/AuthProvider';
 
 const styles = StyleSheet.create({
   buttons: {
@@ -104,6 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textOcontainer: {
+    paddingHorizontal: 10,
     paddingVertical: 20,
     backgroundColor: colors.freshWhite,
   },
@@ -113,9 +113,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginButton = ({ 
-  loginIn, 
-}) => {
+const LoginButton = () => {
+
+  const { 
+    login, 
+    googleLogin,
+  } = useContext(AuthContext);
+
   const [modal, setModal] = useState(false);
 
   const [userName, setUserName] = useState('');
@@ -129,7 +133,7 @@ const LoginButton = ({
 
   const loginCallback = (user, password) => {
     if (userName && userPassword) {
-      loginIn(userName, userPassword);
+      login(userName, userPassword);
     }
   };
 
@@ -148,32 +152,37 @@ const LoginButton = ({
             <Text style={styles.title}>Iniciar sesion</Text>
             <Button title="Cerrar" onPress={() => toggleModal()} />
             <KeyboardAwareScrollView extraScrollHeight={20}>
-              <View style={styles.containerEnterButton}>
-                  <TouchableOpacity 
-                    style={styles.fakeGoogleButton}
-                    onPress={() => {}}>
-                    <Text style={styles.textEnterButton}>Iniciar sesion con Google</Text>
-                  </TouchableOpacity>
-              </View>
-              <View style={styles.containerEnterButton}>
-                  <TouchableOpacity 
-                    style={styles.fakeFacebookButton}
-                    onPress={() => {}}>
-                    <Text 
-                      style={styles.textEnterButton}>
-                    Iniciar sesion con Facebook
-                    </Text>
-                  </TouchableOpacity>
-              </View>
+              { Platform.OS === 'android' ? (
+                <>
+                <View style={styles.containerEnterButton}>
+                    <TouchableOpacity 
+                      style={styles.fakeGoogleButton}
+                      onPress={() => googleLogin()}>
+                      <Text style={styles.textEnterButton}>Iniciar sesion con Google</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.containerEnterButton}>
+                    <TouchableOpacity 
+                      style={styles.fakeFacebookButton}
+                      onPress={() => {}}>
+                      <Text 
+                        style={styles.textEnterButton}>
+                      Iniciar sesion con Facebook
+                      </Text>
+                    </TouchableOpacity>
+                </View>
+                </>
+              ) : null }
               <View style={styles.textOcontainer}>
                 <Text 
                   style={styles.textO}>
-                O ingresa tu nombre de usuario y contraseña aqui: 
+                O ingresa tu correo electronico y contraseña aqui: 
                 </Text>
               </View>
               <View style={styles.inputsContainer}>
                 <TextInput
-                  placeholder="Nombre de usuario"
+                  placeholder="Correo electronico"
+                  keyboardType="email-address"
                   autoCapitalize="none"
                   value={userName}
                   onChangeText={name => setUserName(name)}
@@ -220,17 +229,4 @@ const LoginButton = ({
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loginIn: (user, password) => 
-    dispatch(loginAction({ user, password })),
-  };
-};
-
-const mapStateToProps = globalState => {
-  return {
-    valid: globalState.loginReducer.valid,
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginButton);
+export default LoginButton;

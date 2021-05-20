@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import {
   StyleSheet, 
   View,
@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import colors from '../../configs/colors';
 import LoginButton from './buttons/LoginButton';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const styles = StyleSheet.create({
   main: {
@@ -33,6 +34,12 @@ const styles = StyleSheet.create({
 const Login = () => {
 
   const image = { uri: 'https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1838&q=80' }
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '1015796333091-4336ruefhpj8k97uvk9r8is1jtalskma.apps.googleusercontent.com',
+    });
+  }, [])
 
   return (
     <>

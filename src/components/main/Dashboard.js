@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity,
   View,
@@ -6,9 +6,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import colors from '../../configs/colors';
-import { connect } from 'react-redux';
-import { logout } from '../../redux/actions';
 import { useNavigation } from '@react-navigation/core';
+import { AuthContext } from '../../contexts/firebase/AuthProvider';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,8 +29,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const Dashboard = ({ logout }) => {
+const Dashboard = () => {
   const navigation = useNavigation();
+  const { logout } = useContext(AuthContext);
+
   return (
     <>
       <View style={styles.container}>
@@ -52,10 +53,4 @@ const Dashboard = ({ logout }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: () => dispatch(logout()),
-  };
-};
-
-export default connect(() => ({}), mapDispatchToProps)(Dashboard);
+export default Dashboard;
