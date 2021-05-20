@@ -6,15 +6,18 @@ import {
   TextInput,
   TouchableOpacity,
   Modal,
+  Button,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { login as loginAction } from '../../../redux/actions';
 import colors from '../../../configs/colors';
 import RegisterButton from './RegisterButton';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const styles = StyleSheet.create({
   buttons: {
-    paddingHorizontal: 20,
+    paddingHorizontal: '10%',
+    paddingVertical: '10%',
   },
   loginButton: {
     marginTop: 30,
@@ -33,12 +36,16 @@ const styles = StyleSheet.create({
   },
   modal: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 60,
     alignItems: 'center',
     backgroundColor: colors.freshWhite,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
+    backgroundColor: colors.freshWhite,
+  },
+  textCerrar: {
+    backgroundColor: colors.freshWhite,
   },
   inputsContainer: {
     paddingVertical: 25,
@@ -47,9 +54,9 @@ const styles = StyleSheet.create({
     color: colors.freshWhite,
   },
   textInput: {
-    width: '65%',
-    padding: 5,
-    borderWidth: 5,
+    paddingHorizontal: '20%',
+    paddingVertical: 10,
+    borderWidth: 2,
     color: colors.darkBlue,
     backgroundColor: colors.clouds,
     borderColor: colors.midnightBlue,
@@ -65,13 +72,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 1,
-    paddingBottom: '20%',
+    paddingBottom: '5%',
   },
   enterButton: {
     backgroundColor: colors.summerSky,
     borderRadius: 25,
+    paddingHorizontal: 25,
     padding: 10,
-    width: '80%',
+    width: '90%',
     alignItems: 'center',
   },
   textEnterButton: {
@@ -84,6 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.google,
     borderRadius: 30,
     padding: 15,
+    paddingHorizontal: 25,
     width: '90%',
     alignItems: 'center',
   },
@@ -95,14 +104,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textOcontainer: {
-    padding: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingVertical: 20,
     backgroundColor: colors.freshWhite,
   },
   textO: {
     fontSize: 20,
-    color: colors.darkBlue,
     textAlign: 'center',
   },
 });
@@ -140,67 +146,72 @@ const LoginButton = ({
           animationType="slide">
           <View style={styles.modal}>
             <Text style={styles.title}>Iniciar sesion</Text>
-            <TouchableOpacity onPress={() => toggleModal()}>
-              <Text>Cerrar</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerEnterButton}>
-              <TouchableOpacity 
-                style={styles.fakeGoogleButton}
-                onPress={() => {}}>
-                <Text style={styles.textEnterButton}>Iniciar sesion con Google</Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.containerEnterButton}>
-              <TouchableOpacity 
-                style={styles.fakeFacebookButton}
-                onPress={() => {}}>
-                <Text style={styles.textEnterButton}>Iniciar sesion con Facebook</Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.textOcontainer}>
-            <Text style={styles.textO}>O ingresa tu nombre de usuario y contraseña aqui: </Text>
-          </View>
-            <View style={styles.inputsContainer}>
-              <TextInput
-                placeholder="Nombre de usuario"
-                autoCapitalize="none"
-                value={userName}
-                onChangeText={name => setUserName(name)}
-                style={[styles.textInput,focusNameInput && styles.inputFocusColor,]}
-                onFocus={() => setFocusNameInput(true)}
-                onBlur={() => {
-                  setFocusNameInput(false);
-                  passwordInputRef.current.focus();
-                }}
-              />
-              <TextInput
-                ref={passwordInputRef}
-                placeholder="Tu contraseña"
-                autoCapitalize="none"
-                value={userPassword}
-                onChangeText={password => setUserPassword(password)}
-                style={[
-                  styles.textInput,
-                  focusPasswordInput && styles.inputFocusColor,
-                ]}
-                onFocus={() => setFocusPasswordInput(true)}
-                onBlur={() => setFocusPasswordInput(false)}
-                secureTextEntry={true}
-              />
-            </View>
-          <View style={styles.containerEnterButton}>
-              <TouchableOpacity 
-                style={styles.enterButton}
-                onPress={() => loginCallback()}>
-                <Text style={styles.textEnterButton}>Iniciar sesion</Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.textOcontainer}>
-              <TouchableOpacity  
-                onPress={() => {}}>
-                <Text style={styles.textO}>Has olvidado tu contraseña?</Text>
-              </TouchableOpacity>
+            <Button title="Cerrar" onPress={() => toggleModal()} />
+            <KeyboardAwareScrollView extraScrollHeight={20}>
+              <View style={styles.containerEnterButton}>
+                  <TouchableOpacity 
+                    style={styles.fakeGoogleButton}
+                    onPress={() => {}}>
+                    <Text style={styles.textEnterButton}>Iniciar sesion con Google</Text>
+                  </TouchableOpacity>
+              </View>
+              <View style={styles.containerEnterButton}>
+                  <TouchableOpacity 
+                    style={styles.fakeFacebookButton}
+                    onPress={() => {}}>
+                    <Text 
+                      style={styles.textEnterButton}>
+                    Iniciar sesion con Facebook
+                    </Text>
+                  </TouchableOpacity>
+              </View>
+              <View style={styles.textOcontainer}>
+                <Text 
+                  style={styles.textO}>
+                O ingresa tu nombre de usuario y contraseña aqui: 
+                </Text>
+              </View>
+              <View style={styles.inputsContainer}>
+                <TextInput
+                  placeholder="Nombre de usuario"
+                  autoCapitalize="none"
+                  value={userName}
+                  onChangeText={name => setUserName(name)}
+                  style={[styles.textInput,focusNameInput && styles.inputFocusColor,]}
+                  onFocus={() => setFocusNameInput(true)}
+                  onBlur={() => {
+                    setFocusNameInput(false);
+                    passwordInputRef.current.focus();
+                  }}
+                />
+                <TextInput
+                  ref={passwordInputRef}
+                  placeholder="Tu contraseña"
+                  autoCapitalize="none"
+                  value={userPassword}
+                  onChangeText={password => setUserPassword(password)}
+                  style={[
+                    styles.textInput,
+                    focusPasswordInput && styles.inputFocusColor,
+                  ]}
+                  onFocus={() => setFocusPasswordInput(true)}
+                  onBlur={() => setFocusPasswordInput(false)}
+                  secureTextEntry={true}
+                />
+              </View>
+              <View style={styles.containerEnterButton}>
+                <TouchableOpacity 
+                  style={styles.enterButton}
+                  onPress={() => loginCallback()}>
+                  <Text style={styles.textEnterButton}>Iniciar sesion</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.textOcontainer}>
+                <Button  
+                  title="Has olvidado tu contraseña?"
+                  onPress={() => {}}/>
+              </View>
+            </KeyboardAwareScrollView>
           </View>
         </Modal>
         <RegisterButton />

@@ -30,8 +30,7 @@ const Theme = ({ children }) => {
         mainTheme,
         toggleDarkMode,
         darkModeEnabled,
-      }}
-    >
+      }}>
       {children}
     </ThemeContext.Provider>
   );

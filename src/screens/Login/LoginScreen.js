@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   containerWelcomeText: {
     marginTop: '30%',
-    paddingVertical: '50%',
+    paddingVertical: '35%',
   },
   textWelcome: {
     fontWeight: 'bold',
