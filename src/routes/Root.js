@@ -6,10 +6,11 @@ import LoginNavigator from './LoginStack';
 import { AuthContext } from '../contexts/firebase/AuthProvider';
 import auth from '@react-native-firebase/auth';
 
+
 const RootStack = createStackNavigator();
 
 const RootNavigation = () => {
-  const {user, setUser} = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [initializing, setInitializing] = useState(true);
 
   const onAuthStateChanged = (user) => {
@@ -29,7 +30,7 @@ const RootNavigation = () => {
       <RootStack.Navigator headerMode="none">
         { 
           !user 
-          ? (<RootStack.Screen name="LoginNavigator" component={LoginNavigator} />) 
+          ? ( <RootStack.Screen name="LoginNavigator" component={LoginNavigator} /> ) 
           : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
         }
       </RootStack.Navigator>

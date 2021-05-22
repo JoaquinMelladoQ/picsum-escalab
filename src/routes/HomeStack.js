@@ -7,6 +7,7 @@ import ImageList from '../components/ImageList';
 const HomeStack = createStackNavigator();
 
 const HomeNavigation = () => {
+
   return (
     <HomeStack.Navigator headerMode="none" >
       <HomeStack.Screen name="home" component={Home} />

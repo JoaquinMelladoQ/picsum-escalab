@@ -164,7 +164,7 @@ const LoginButton = () => {
                 <View style={styles.containerEnterButton}>
                     <TouchableOpacity 
                       style={styles.fakeFacebookButton}
-                      onPress={() => {}}>
+                      onPress={() => alert('Todavia no esta habilitada esta opcion, en desarrollo')}>
                       <Text 
                         style={styles.textEnterButton}>
                       Iniciar sesion con Facebook

@@ -37,7 +37,7 @@ const Login = () => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '1015796333091-4336ruefhpj8k97uvk9r8is1jtalskma.apps.googleusercontent.com',
+      webClientId: '1015796333091-j8j9u15l0hq726n504a2rs79b8ijqeg0.apps.googleusercontent.com',
     });
   }, [])
 
