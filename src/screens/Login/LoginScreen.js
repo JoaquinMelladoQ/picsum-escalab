@@ -31,14 +31,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Login = () => {
+const Login = ({ user }) => {
+  console.log({user});
 
   const image = { uri: 'https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1838&q=80' }
 
   useEffect(() => {
+    Platform.OS === 'android' ?
     GoogleSignin.configure({
       webClientId: '1015796333091-j8j9u15l0hq726n504a2rs79b8ijqeg0.apps.googleusercontent.com',
-    });
+    }) : null ;
   }, [])
 
   return (

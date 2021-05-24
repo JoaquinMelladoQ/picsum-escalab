@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.freshWhite,
   },
   textO: {
-    fontSize: 20,
+    fontSize: 19,
     textAlign: 'center',
   },
 });
@@ -152,7 +152,8 @@ const LoginButton = () => {
             <Text style={styles.title}>Iniciar sesion</Text>
             <Button title="Cerrar" onPress={() => toggleModal()} />
             <KeyboardAwareScrollView extraScrollHeight={20}>
-              { Platform.OS === 'android' ? (
+              { Platform.OS === 'android' ? 
+                  (
                 <>
                 <View style={styles.containerEnterButton}>
                     <TouchableOpacity 
@@ -218,7 +219,7 @@ const LoginButton = () => {
               <View style={styles.textOcontainer}>
                 <Button  
                   title="Has olvidado tu contraseña?"
-                  onPress={() => {}}/>
+                  onPress={() => alert('En construccion')}/>
               </View>
             </KeyboardAwareScrollView>
           </View>

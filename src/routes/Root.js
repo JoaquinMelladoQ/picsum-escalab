@@ -6,7 +6,6 @@ import LoginNavigator from './LoginStack';
 import { AuthContext } from '../contexts/firebase/AuthProvider';
 import auth from '@react-native-firebase/auth';
 
-
 const RootStack = createStackNavigator();
 
 const RootNavigation = () => {

@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   TouchableOpacity,
   View,
   Text,
   StyleSheet,
+  Image,
 } from 'react-native';
 import colors from '../../configs/colors';
 import { useNavigation } from '@react-navigation/core';
@@ -20,27 +21,54 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   button: {
-    //borderWidth: 1
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textButton: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
     color: colors.freshWhite,
   },
+  userAvatar: {
+    height: 30,
+    width: 30,
+    borderRadius: 25,
+    alignSelf: 'center',
+  }
 })
 
 const Dashboard = () => {
-  const navigation = useNavigation();
-  const { logout } = useContext(AuthContext);
 
+  const navigation = useNavigation();
+  const { user, login, logout } = useContext(AuthContext);
+  
+  if (user !== null) {
+    const { user: { photoURL, displayName, email } } = useContext(AuthContext);
+  };
+  
   return (
     <>
-      <View style={styles.container}>
+       <View style={styles.container}>
         <View style={styles.button}>
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('Profile', {})}>
-            <Text style={styles.textButton}>Yo</Text>
-          </TouchableOpacity>
+          {
+            user === null ?
+              (
+                <TouchableOpacity 
+                  onPress={() => navigation.navigate('Profile', {})}>
+                  <Text style={styles.textButton}>Yo</Text> 
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity 
+                  onPress={() => navigation.navigate('Profile', {})}>
+                  <Image 
+                    style={styles.userAvatar}
+                    source={{ uri: user.photoURL }}
+                  />
+                  <Text style={styles.textButton}>{user.displayName}</Text>
+                </TouchableOpacity>
+              )
+          }
         </View>
         <View style={styles.button}>
           <TouchableOpacity 
@@ -49,7 +77,7 @@ const Dashboard = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </>
+    </>  
   );
 };
 
