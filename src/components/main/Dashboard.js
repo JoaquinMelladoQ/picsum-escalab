@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity,
   View,
@@ -65,10 +65,13 @@ const Dashboard = () => {
                     style={styles.userAvatar}
                     source={{ uri: user.photoURL }}
                   />
-                  <Text style={styles.textButton}>{user.displayName}</Text>
                 </TouchableOpacity>
-              )
+              ) 
           }
+                <TouchableOpacity 
+                  onPress={() => navigation.navigate('Profile', {})}>
+                  <Text style={styles.textButton}>Yo</Text> 
+                </TouchableOpacity>
         </View>
         <View style={styles.button}>
           <TouchableOpacity 
