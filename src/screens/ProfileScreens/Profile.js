@@ -38,14 +38,14 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 50,
   },
-  containerEditarButton: {
+  containerEditButton: {
     backgroundColor: colors.softBlue,
     borderWidth: 1,
     marginTop: 5,
     borderRadius: 25,
     padding: 5,
   },
-  textEditar: {
+  textEdit: {
     fontSize: 15,
     fontWeight: 'bold',
     color: colors.freshWhite,
@@ -102,16 +102,16 @@ const Profile = () => {
             style={styles.userAvatar}
             source={{ uri: photoURL }}
           />
-          <View style={styles.containerEditarButton}>
+          <View style={styles.containerEditButton}>
             <TouchableOpacity
               onPress={() => toggleModal()}>
-              <Text style={styles.textEditar}>Editar foto</Text>
+              <Text style={styles.textEdit}>Editar foto</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.containerEditarButton}>
+          <View style={styles.containerEditButton}>
             <TouchableOpacity
               onPress={() => navigation.navigate('GoToProfile', {})}>
-              <Text style={styles.textEditar}>Ver perfil</Text>
+              <Text style={styles.textEdit}>Ver perfil</Text>
             </TouchableOpacity>
           </View>
             <Modal

@@ -5,14 +5,29 @@ import {
   Text,
   Button
 } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { useRoute, useNavigation } from '@react-navigation/core';
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
 });
 
-const GoToProfile = () => {
+const GoToProfile = (props) => {
+  const { 
+    params: { 
+      addInfoDetail, 
+      details, 
+      info, 
+      web 
+    } 
+  } = useRoute();
   const navigation = useNavigation();
+  //console.log({ props });
+  //console.log({ addInfoDetail });
+  //console.log({ details });
+  //console.log({ info });
+  //console.log({ web });
 
   return (
     <>
@@ -21,6 +36,11 @@ const GoToProfile = () => {
       </View>
       <View style={styles.container}>
         <Text>Profile</Text>
+        <Text>{info}</Text>
+        <Text>{web}</Text>
+      </View>
+      <View>
+        <Button title="Confirmar y guardar" onPress={() => addInfoDetail()}/>
       </View>
     </>
   );
