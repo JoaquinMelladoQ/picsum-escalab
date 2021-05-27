@@ -108,12 +108,6 @@ const Profile = () => {
               <Text style={styles.textEdit}>Editar foto</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.containerEditButton}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('GoToProfile', {})}>
-              <Text style={styles.textEdit}>Ver perfil</Text>
-            </TouchableOpacity>
-          </View>
             <Modal
               visible={modal}
               animationType="slide">

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -6,28 +6,40 @@ import {
   Button
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/core';
+import colors from '../../configs/colors'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  mainTitleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.debilBlue,
+    padding: 10,
+    marginHorizontal: 90,
+    borderRadius: 25,
+  },
+  mainTitleText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.freshWhite,
+  },
+  contentFromData: {
+    marginVertical: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 const GoToProfile = (props) => {
   const { 
     params: { 
-      addInfoDetail, 
-      details, 
-      info, 
-      web 
+      info,
+      web,
     } 
   } = useRoute();
   const navigation = useNavigation();
-  //console.log({ props });
-  //console.log({ addInfoDetail });
-  //console.log({ details });
-  //console.log({ info });
-  //console.log({ web });
 
   return (
     <>
@@ -35,12 +47,16 @@ const GoToProfile = (props) => {
         <Button title="Volver" onPress={() => navigation.pop()}/>
       </View>
       <View style={styles.container}>
-        <Text>Profile</Text>
-        <Text>{info}</Text>
-        <Text>{web}</Text>
+        <View style={styles.mainTitleContainer}>
+          <Text style={styles.mainTitleText}>Profile</Text>
+        </View>
+        <View style={styles.contentFromData}>
+          <Text>{info}</Text>
+          <Text>{web}</Text>
+        </View>
       </View>
       <View>
-        <Button title="Confirmar y guardar" onPress={() => addInfoDetail()}/>
+        <Button title="Confirmar y guardar" onPress={() => {}}/>
       </View>
     </>
   );
