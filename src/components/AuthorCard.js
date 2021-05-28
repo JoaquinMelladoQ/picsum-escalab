@@ -30,12 +30,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const AuthorCard = ({ 
-  author, 
-  download_url
-}) => {
-
-  const routes = { download_url }
+const AuthorCard = ({ author, download_url }) => {
+  const routes = { download_url, author }
   const navigation = useNavigation();
 
   return (
@@ -44,7 +40,8 @@ const AuthorCard = ({
         <TouchableOpacity 
           style={styles.containerText}
           onPress={() => navigation.navigate('ImageList', {
-            download_url
+            download_url,
+            author,
           })}>
             <Text style={styles.text}>{author}</Text>
         </TouchableOpacity>

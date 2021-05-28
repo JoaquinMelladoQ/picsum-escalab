@@ -19,7 +19,7 @@ export default class AuthorList extends Component {
   
   render() {
     const { apiReducer, color } = this.props;
-    console.log({ apiReducer });
+    //console.log({ apiReducer });
 
     return (
       <>

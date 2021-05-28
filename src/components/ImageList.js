@@ -2,8 +2,6 @@ import React from 'react';
 import { 
   StyleSheet, 
   View, 
-  TouchableOpacity,
-  Text,
 } from 'react-native';
 import { useRoute } from '@react-navigation/core';
 import ImageUrl from './ImageUrl';
@@ -34,25 +32,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const ImageList = ({ 
-  navigation,
-}) => {
-  const { 
-    params: {  download_url }
-  } = useRoute();
+const ImageList = ({ navigation }) => {
+  const { params: {  download_url, author } } = useRoute();
+  console.log({ author });
   
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => navigation.pop()}>
-          <Text style={styles.textButton}>Atras</Text>
-        </TouchableOpacity>
         <View style={styles.image}>
           <ImageUrl 
             download_url={download_url}
             source={{ uri: download_url }}
+            navigation={navigation}
+            author={author}
           />
         </View>
       </View>

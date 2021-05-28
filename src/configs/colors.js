@@ -12,6 +12,9 @@ const colors = {
   electionBlue: '#0984e3',
   google: '#4285F4',
   facebook: '#3b5998',
+  liked: '#e31b23',
+  gray: '#7f8c8d',
+  silver: '#bdc3c7',
 };
 
 export default colors;
