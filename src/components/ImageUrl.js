@@ -52,7 +52,6 @@ export default class ImageUrl extends Component {
 
     const { download_url, navigation, author } = this.props; 
     const { like, modal, modalToShare } = this.state;
-    console.log({ author });
 
     return (
       <>
@@ -72,7 +71,7 @@ export default class ImageUrl extends Component {
                 />
               </TouchableOpacity>
               <View>
-                <Text>Autor: {author}</Text>
+                <Text>{author}</Text>
               </View>
             </View>
             <View style={styles.IconsContainer}>

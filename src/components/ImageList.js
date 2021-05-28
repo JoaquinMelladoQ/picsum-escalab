@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
 
 const ImageList = ({ navigation }) => {
   const { params: {  download_url, author } } = useRoute();
-  console.log({ author });
   
   return (
     <>

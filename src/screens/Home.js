@@ -28,7 +28,9 @@ const Home = () => {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <Dashboard />
+        <Dashboard 
+          apiReducer={apiReducer}
+        />
         <AuthorList 
           apiReducer={apiReducer} 
         />

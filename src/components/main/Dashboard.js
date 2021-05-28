@@ -3,13 +3,16 @@ import {
   TouchableOpacity,
   View,
   Text,
+  Modal,
   StyleSheet,
-  Image,
+  TextInput,
 } from 'react-native';
 import colors from '../../configs/colors';
 import { useNavigation } from '@react-navigation/core';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import SearchAuthor from './SearchAuthor';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,15 +45,39 @@ const styles = StyleSheet.create({
   }
 })
 
-const Dashboard = () => {
+const Dashboard = ({ apiReducer }) => {
 
-  const [validImage, setValidImage] = useState(true);
+//  const arrayApi = Object.keys({ apiReducer })
+  //console.log(arrayApi.author);
+
+  
+  const [modalSearch, setModalSearch] = useState(false);
   const navigation = useNavigation();
-  const { user, login, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+
+  const toggleModalSearch = () => setModalSearch(!modalSearch)
   
   if (user !== null) {
-    const { user: { photoURL, displayName, email } } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
   };
+  
+  Icon.loadFont()
+  Fontisto.loadFont()
+  //console.log({ apiReducer });
+
+  //const authorsFromApiReducer = (props) => {
+    //console.log(props);
+    //console.log({ apiReducer });
+    //const arrayApi = Object.keys({ apiReducer })
+    //console.log({ arrayApi });
+//    const authorName = arrayApi.reducer((authorTypes, authors) => {
+      //return [...authorTypes, ...authors.author]
+//    }, [])
+//  };
+  
+  useEffect(() => {
+    //authorsFromApiReducer();
+  }, [])
   
   return (
     <>
@@ -79,6 +106,25 @@ const Dashboard = () => {
               </TouchableOpacity>
             )
           }
+        </View>
+        <View style={styles.button}>
+          <TouchableOpacity 
+            onPress={() => toggleModalSearch()}>
+            <Fontisto
+              size={30}
+              name="search"
+              color={colors.freshWhite}
+            />
+            <Text style={styles.textButton}>Buscar</Text>
+          </TouchableOpacity>
+          <Modal
+            transparent={true}
+            visible={modalSearch}
+            animationType="slide">
+            <SearchAuthor 
+              toggleModalSearch={toggleModalSearch}
+            />
+          </Modal>
         </View>
         <View style={styles.button}>
           <TouchableOpacity 
