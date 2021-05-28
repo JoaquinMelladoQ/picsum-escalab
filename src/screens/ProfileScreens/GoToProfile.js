@@ -37,6 +37,7 @@ const GoToProfile = (props) => {
     params: { 
       info,
       web,
+      userName,
     } 
   } = useRoute();
   const navigation = useNavigation();
@@ -44,7 +45,11 @@ const GoToProfile = (props) => {
   return (
     <>
       <View>
-        <Button title="Volver" onPress={() => navigation.pop()}/>
+        <Button title="Volver" onPress={() => navigation.navigate('Profile', {
+          info,
+          web,
+          userName
+        })}/>
       </View>
       <View style={styles.container}>
         <View style={styles.mainTitleContainer}>
@@ -53,6 +58,7 @@ const GoToProfile = (props) => {
         <View style={styles.contentFromData}>
           <Text>{info}</Text>
           <Text>{web}</Text>
+          <Text>{userName}</Text>
         </View>
       </View>
       <View>

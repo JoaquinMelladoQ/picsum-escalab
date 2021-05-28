@@ -19,6 +19,8 @@ export default class AuthorList extends Component {
   
   render() {
     const { apiReducer, color } = this.props;
+    console.log({ apiReducer });
+
     return (
       <>
        <SafeAreaView style={styles.container}>

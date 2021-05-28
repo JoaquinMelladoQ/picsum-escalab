@@ -40,15 +40,15 @@ const AuthorCard = ({
 
   return (
     <>
-    <SafeAreaView style={styles.container}>
-      <TouchableOpacity 
-        style={styles.containerText}
-        onPress={() => navigation.navigate('ImageList', {
-          download_url
-        })}>
-          <Text style={styles.text}>{author}</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity 
+          style={styles.containerText}
+          onPress={() => navigation.navigate('ImageList', {
+            download_url
+          })}>
+            <Text style={styles.text}>{author}</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
     </>
   );
 };

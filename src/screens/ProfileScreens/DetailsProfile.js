@@ -13,13 +13,14 @@ import { useRoute, useNavigation } from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    marginTop: '20%',
+    paddingHorizontal: 20,
   },
   titleItems: {
     color: colors.neonBlue,
     fontSize: 18,
     fontWeight: '300', 
-    padding: 5,
+    paddingVertical: 2,
   },
   textDetail: {
     padding: 5,
@@ -44,20 +45,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const DetailsProfile = () => {
+const DetailsProfile = ({ toggleModal }) => {
   const routes = useRoute();
   const navigation = useNavigation();
   const [info, setInfo] = useState('', routes.params.info);
   const [web, setWeb] = useState('', routes.params.web);
+  const [userName, setUserName] = useState('', routes.params.userName);
   const { user: { displayName, email } } = useContext(AuthContext);
 
   const infoAsyncStorageKey = 'info';
   const webAsyncStorageKey = 'web';
+  const userAsyncStorageKey = 'user';
 
   const storeData = async () => {
     try {
       await AsyncStorage.setItem(infoAsyncStorageKey, JSON.stringify(info))
       await AsyncStorage.setItem(webAsyncStorageKey, JSON.stringify(web))
+      await AsyncStorage.setItem(userAsyncStorageKey, JSON.stringify(userName))
     } catch (e) {
       console.log(e);
     }
@@ -70,11 +74,13 @@ const DetailsProfile = () => {
       const webSavedData = JSON.parse(
         await AsyncStorage.getItem(webAsyncStorageKey),
       );
-        if (infoSavedData && webSavedData) {
+      const userNameSavedData = JSON.parse(
+        await AsyncStorage.getItem(userAsyncStorageKey),
+      );
+        if (infoSavedData && webSavedData && userNameSavedData) {
           setInfo(infoSavedData)
           setWeb(webSavedData)
-          console.log({ infoSavedData });
-          console.log({ webSavedData });
+          setUserName(userNameSavedData)
         }
     } catch (e) {
       console.log(e);
@@ -88,6 +94,11 @@ const DetailsProfile = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity 
+        style={styles.containerSaveButton}
+        onPress={toggleModal}>
+        <Text style={styles.textSave}>Cerrar</Text>
+      </TouchableOpacity>
       <Text style={styles.titleItems}>Nombre:</Text>
       <Text style={styles.textDetail}>{displayName}</Text>
       <Text style={styles.titleItems}>Info:</Text>
@@ -106,6 +117,14 @@ const DetailsProfile = () => {
           value={web}
           onChangeText={web => setWeb(web)}>
         </TextInput>
+      <Text style={styles.titleItems}>Nombre de usuario:</Text>
+        <TextInput 
+          placeholder={'Ejemplo: @usuario'}
+          placeholderTextColor={colors.debilBlue}
+          style={styles.textDetail}
+          value={userName}
+          onChangeText={userName => setUserName(userName)}>
+        </TextInput>
       <Text style={styles.titleItems}>Correo electronico:</Text>
       <Text style={styles.textDetail}>{email}</Text>
       <View style={styles.containerSaveButton}>
@@ -113,6 +132,7 @@ const DetailsProfile = () => {
           onPress={()=> navigation.navigate('GoToProfile', {
             info,
             web,
+            userName
           })}>
           <Text style={styles.textSave}>Guardar</Text>
         </TouchableOpacity>
