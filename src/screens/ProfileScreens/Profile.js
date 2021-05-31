@@ -15,6 +15,7 @@ import colors from '../../configs/colors';
 import { useRoute, useNavigation } from '@react-navigation/core';
 import DetailsProfile from './DetailsProfile';
 import Icon from 'react-native-vector-icons/AntDesign';
+import ChangePhoto from '../Camera/ChangePhoto';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,18 +60,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     color: colors.freshWhite,
-  },
-  content: {
-    flex: 1,
-    paddingTop: 90,
-    backgroundColor: colors.softBlue,
-  },
-  containerCloseButton: {
-    alignItems: 'center',
-    backgroundColor: colors.darkBlue,
-  },
-  closeButton: {
-    padding: 30,
   },
   textCloseButton: {
     color: colors.freshWhite,
@@ -142,35 +131,29 @@ const Profile = () => {
             <Text style={styles.title}>Editar perfil</Text>
           </View>
           { photoURL ? (
-            <Image 
-              style={styles.userAvatar}
-              source={{ uri: photoURL }}
-            />
-          ) : (
-            <Image 
-              style={styles.userAvatar}
-              source={require('../../assets/no-avatar.jpeg')}
-            />
-          ) }
-          <View style={styles.containerEditButton}>
             <TouchableOpacity
               onPress={() => toggleModalEditPhoto()}>
-              <Text style={styles.textEdit}>Editar foto</Text>
+              <Image 
+                style={styles.userAvatar}
+                source={{ uri: photoURL }}
+              />
             </TouchableOpacity>
-          </View>
+          ) : (
+            <TouchableOpacity 
+              onPress={() => toggleModalEditPhoto()}>
+              <Image
+                style={styles.userAvatar}
+                source={require('../../assets/no-avatar.jpeg')}
+              />
+            </TouchableOpacity>
+          ) }
             <Modal
+              transparent={true}
               visible={modalPhoto}
-              animationType="fade">
-              <View style={styles.content}>
-                <Text>Another content from modal</Text>
-              </View>
-              <View style={styles.containerCloseButton}>
-                <TouchableOpacity 
-                  style={styles.closeButton}
-                  onPress={toggleModalEditPhoto}>
-                  <Text style={styles.textCloseButton}>Cerrar</Text>
-                </TouchableOpacity>
-              </View>
+              animationType="slide">
+              <ChangePhoto 
+                toggleModalEditPhoto={toggleModalEditPhoto}
+              />
             </Modal>
           <View style={styles.containerDetailsSection}>
             <Text style={styles.infoText}>{info}</Text>
