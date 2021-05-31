@@ -31,6 +31,18 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
     paddingLeft: '5%'
   },
+  modalCloseButton: {
+    flex: 1, 
+    paddingTop: 10, 
+    marginTop: '95%', 
+    backgroundColor: colors.clouds, 
+    borderRadius: 25,
+    borderWidth: 2,
+  },
+  modalCloseButtonText: {
+    alignItems: 'center', 
+    textAlign: 'center' 
+  },
 });
 
 export default class ImageUrl extends Component {
@@ -94,9 +106,9 @@ export default class ImageUrl extends Component {
                   transparent={true}
                   visible={modal}
                   animationType="slide">
-                  <View style={{ flex: 1, paddingTop: 10, marginTop: '95%', backgroundColor: colors.freshWhite }}>
+                  <View style={styles.modalCloseButton}>
                     <TouchableOpacity onPress={this.toggleMessegesModal}>
-                      <Text style={{ alignItems: 'center', textAlign: 'center' }}>Cerrar</Text>
+                      <Text style={styles.modalCloseButtonText}>Cerrar</Text>
                     </TouchableOpacity>
                   </View>
                 </Modal>
@@ -112,9 +124,9 @@ export default class ImageUrl extends Component {
                   transparent={true}
                   visible={modalToShare}
                   animationType="fade">
-                  <View style={{ flex: 1, paddingTop: 10, marginTop: '95%', backgroundColor: colors.freshWhite }}>
+                  <View style={styles.modalCloseButton}>
                     <TouchableOpacity onPress={this.toggleShareModal}>
-                      <Text style={{ alignItems: 'center', textAlign: 'center' }}>Cerrar</Text>
+                      <Text style={styles.modalCloseButtonText}>Cerrar</Text>
                     </TouchableOpacity>
                   </View>
                 </Modal>

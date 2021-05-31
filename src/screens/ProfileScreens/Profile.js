@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     paddingVertical: '1%',
   },
   containerTitle: {
-    paddingBottom: 5,
+    padding: 20,
   },
   title: {
     fontSize: 16,
@@ -43,10 +43,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.softBlue,
     borderWidth: 1,
-    marginTop: 2,
+    padding: 5,
+    marginTop: 10,
     borderRadius: 25,
-    paddingBottom: 1,
-    paddingHorizontal: 5,
     justifyContent: 'center',
   },
   containerSettingButton: {
@@ -99,8 +98,10 @@ const styles = StyleSheet.create({
 const Profile = () => {
   const { params: { info, web, userName } } = useRoute();
   const navigation = useNavigation();
+  
   const [modal, setModal] = useState(false);
   const [modalPhoto, setModalPhoto] = useState(false);
+
   const { mainTheme, toggleDarkMode, darkModeEnabled } = useContext(ThemeContext);
   const { user: { photoURL } } = useContext(AuthContext);
 
@@ -140,10 +141,17 @@ const Profile = () => {
           <View style={styles.containerTitle}>
             <Text style={styles.title}>Editar perfil</Text>
           </View>
-          <Image 
-            style={styles.userAvatar}
-            source={{ uri: photoURL }}
-          />
+          { photoURL ? (
+            <Image 
+              style={styles.userAvatar}
+              source={{ uri: photoURL }}
+            />
+          ) : (
+            <Image 
+              style={styles.userAvatar}
+              source={require('../../assets/no-avatar.jpeg')}
+            />
+          ) }
           <View style={styles.containerEditButton}>
             <TouchableOpacity
               onPress={() => toggleModalEditPhoto()}>
@@ -173,8 +181,7 @@ const Profile = () => {
             visible={modal}
             animationType="slide">
             <DetailsProfile 
-              toggleModal={toggleModal}
-            />
+              toggleModal={toggleModal}/>
           </Modal>
       </View>
     </>

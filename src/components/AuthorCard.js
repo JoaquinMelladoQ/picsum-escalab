@@ -43,7 +43,9 @@ const AuthorCard = ({ author, download_url }) => {
             download_url,
             author,
           })}>
-            <Text style={styles.text}>{author}</Text>
+            <Text style={styles.text}>
+              {author}
+            </Text>
         </TouchableOpacity>
       </SafeAreaView>
     </>

@@ -1,11 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   TouchableOpacity,
   View,
   Text,
   Modal,
   StyleSheet,
-  TextInput,
 } from 'react-native';
 import colors from '../../configs/colors';
 import { useNavigation } from '@react-navigation/core';
@@ -46,39 +45,14 @@ const styles = StyleSheet.create({
 })
 
 const Dashboard = ({ apiReducer }) => {
-
-//  const arrayApi = Object.keys({ apiReducer })
-  //console.log(arrayApi.author);
-
-  
   const [modalSearch, setModalSearch] = useState(false);
   const navigation = useNavigation();
   const { user, logout } = useContext(AuthContext);
 
   const toggleModalSearch = () => setModalSearch(!modalSearch)
   
-  if (user !== null) {
-    const { user } = useContext(AuthContext);
-  };
-  
   Icon.loadFont()
   Fontisto.loadFont()
-  //console.log({ apiReducer });
-
-  //const authorsFromApiReducer = (props) => {
-    //console.log(props);
-    //console.log({ apiReducer });
-    //const arrayApi = Object.keys({ apiReducer })
-    //console.log({ arrayApi });
-//    const authorName = arrayApi.reducer((authorTypes, authors) => {
-      //return [...authorTypes, ...authors.author]
-//    }, [])
-//  };
-  
-  useEffect(() => {
-    //authorsFromApiReducer();
-  }, [])
-  
   return (
     <>
        <View style={styles.container}>
@@ -123,6 +97,7 @@ const Dashboard = ({ apiReducer }) => {
             animationType="slide">
             <SearchAuthor 
               toggleModalSearch={toggleModalSearch}
+              apiReducer={apiReducer}
             />
           </Modal>
         </View>
