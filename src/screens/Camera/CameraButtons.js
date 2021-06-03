@@ -63,7 +63,7 @@ const CameraButtons = ({ toggleModalEditPhoto }) => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.camButton}
-          onPress={() => {}}>
+          onPress={() => navigation.navigate('AddPhoto')}>
           <Icon size={20} style={styles.icon} name="upload"/>
           <Text style={styles.camTextButton}>Sube una foto</Text>
         </TouchableOpacity>

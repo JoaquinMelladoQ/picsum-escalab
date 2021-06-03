@@ -8,6 +8,8 @@ import {
 import { RNCamera } from 'react-native-camera';
 import colors from '../../configs/colors';
 import CameraInterface from './CameraInterface';
+import { useNavigation } from '@react-navigation/core';
+import { useUserInformation } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,23 +30,37 @@ const styles = StyleSheet.create({
   },
 });
 
-const CameraStatus = ({ message }) => {
-  <View style={styles.cameraStatusContainer}>
-    <Text style={styles.cameraStatusText}>
-      { message }
-    </Text>
-  </View>
-};
+/*
+ *const CameraStatus = ({ message }) => {
+ *  <View style={styles.cameraStatusContainer}>
+ *    <Text style={styles.cameraStatusText}>
+ *      { message }
+ *    </Text>
+ *  </View>
+ *};
+ */
 
 
 const Camera = () => {
+  const navigation = useNavigation();
+  const { photo, setPhoto } = useUserInformation();
+
+  const takePicture = async (camera) => {
+    const options = { quality: 0.5, base64: true }
+    const data = await camera.takePictureAsync(options);
+    console.log({ data });
+    if (data.uri) {
+      setPhoto(data.uri);
+      navigation.navigate('AddPhoto');
+    }
+  };
 
   return (
   <>
     <SafeAreaView style={styles.container}>
       <RNCamera 
         style={{ flex: 1, height: '100%'}}
-        type={RNCamera.Constants.Type.front}
+        type={RNCamera.Constants.Type.back}
         flashMode={RNCamera.Constants.FlashMode.on}
         captureAudio={false}
       >
@@ -61,7 +77,12 @@ const Camera = () => {
            */
           if (status === 'READY'){
             console.log({ status });
-            return <CameraInterface />
+            return (
+              <CameraInterface 
+                camera={camera} 
+                takePicture={takePicture}
+              />
+            )
           }
         }}
       </RNCamera>
