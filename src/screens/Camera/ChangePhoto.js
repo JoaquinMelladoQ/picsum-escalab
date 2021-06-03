@@ -36,8 +36,7 @@ const ChangePhoto = ({ toggleModalEditPhoto }) => {
           <Text style={styles.mainTitle}>Cambia tu foto de perfil</Text>
         </View>
         <CameraButtons 
-          toggleModalEditPhoto={toggleModalEditPhoto}
-        /> 
+          toggleModalEditPhoto={toggleModalEditPhoto}/> 
       </View>
     </>
   );

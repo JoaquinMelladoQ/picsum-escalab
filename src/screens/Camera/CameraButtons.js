@@ -7,12 +7,13 @@ import {
 } from 'react-native';
 import colors from '../../configs/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   actionButtons: {
     padding: 10,
     marginHorizontal: 20,
-    marginVertical: '30%',
+    marginVertical: '10%',
   },
   camButton: {
     flexDirection: 'row',
@@ -49,12 +50,14 @@ const styles = StyleSheet.create({
 });
 
 const CameraButtons = ({ toggleModalEditPhoto }) => {
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={styles.actionButtons}>
         <TouchableOpacity 
           style={styles.camButton}
-          onPress={() => {}}>
+          onPress={() => navigation.navigate('Camera')}>
           <Icon size={20} style={styles.icon} name="camera"/>
           <Text style={styles.camTextButton}>Toma una foto</Text>
         </TouchableOpacity>
