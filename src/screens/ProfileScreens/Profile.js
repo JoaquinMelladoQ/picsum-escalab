@@ -99,25 +99,6 @@ const Profile = () => {
   const toggleModal = () => setModal(!modal);
   const toggleModalEditPhoto = () => setModalPhoto(!modalPhoto);
 
-
-const shouldRender = !photo ? (
-      <TouchableOpacity 
-        onPress={() => toggleModalEditPhoto()}>
-        <Image
-          style={styles.userAvatar}
-          source={{ uri: photo }}
-        />
-      </TouchableOpacity>
-  ) : (
-    <TouchableOpacity 
-      onPress={() => toggleModalEditPhoto()}>
-      <Image
-        style={styles.userAvatar}
-        source={require('../../assets/no-avatar.jpeg')}
-      />
-    </TouchableOpacity> 
-  )
-
   return (
     <>
       <View>
@@ -165,8 +146,9 @@ const shouldRender = !photo ? (
                 onPress={() => toggleModalEditPhoto()}>
                 <Image
                   style={styles.userAvatar}
-                  source={{ uri: photo }}
-                />
+                  source={
+                    photo ? { uri: photo } 
+                          : require('../../assets/no-avatar.jpeg')}/>
               </TouchableOpacity>
             ) 
           }

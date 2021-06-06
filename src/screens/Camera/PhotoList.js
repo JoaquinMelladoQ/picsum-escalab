@@ -2,29 +2,18 @@ import React from 'react';
 import { 
   StyleSheet, 
   View, 
-  Text,
-  Image,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 import colors from '../../configs/colors';
 import { useUserInformation } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 20,
     width: '100%',
     alignItems: 'center',
-  },
-  addPhotoContainer: {
-    borderColor: colors.darkBlue,
-    borderWidth: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imageFrame: {
-    width: 120,
-    height: 120,
-    borderRadius: 50,
   },
   circleContainer: {
     width: 140,
@@ -36,26 +25,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddPhoto = () => {
+const PhotoList = () => {
   const { photo } = useUserInformation();
   console.log({ photo });
-  const ImagePhoto = !photo ? (
-    <View style={[styles.addPhotoContainer, styles.imageFrame]}>
-      <Text>Sin foto</Text>
-    </View>
-  ) : (
-    <Image source={{ uri: photo }} />
-  )
   return (
     <View style={styles.container}>
       <TouchableHighlight 
         underlayColor={colors.darkBlue}
         style={styles.circleContainer}
         onPress={()=> {}}>
-        {ImagePhoto}
+        <Image 
+          source={{ uri: photo }}
+        />
       </TouchableHighlight>
     </View>
   )
 };
 
-export default AddPhoto
+export default PhotoList;

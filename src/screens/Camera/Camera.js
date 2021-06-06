@@ -30,17 +30,6 @@ const styles = StyleSheet.create({
   },
 });
 
-/*
- *const CameraStatus = ({ message }) => {
- *  <View style={styles.cameraStatusContainer}>
- *    <Text style={styles.cameraStatusText}>
- *      { message }
- *    </Text>
- *  </View>
- *};
- */
-
-
 const Camera = () => {
   const navigation = useNavigation();
   const { photo, setPhoto } = useUserInformation();
@@ -48,10 +37,10 @@ const Camera = () => {
   const takePicture = async (camera) => {
     const options = { quality: 0.5, base64: true }
     const data = await camera.takePictureAsync(options);
-    console.log({ data });
+    //console.log({ data });
     if (data.uri) {
       setPhoto(data.uri);
-      navigation.navigate('AddPhoto');
+      navigation.navigate('PhotoList');
     }
   };
 
@@ -62,21 +51,10 @@ const Camera = () => {
         style={{ flex: 1, height: '100%'}}
         type={RNCamera.Constants.Type.back}
         flashMode={RNCamera.Constants.FlashMode.on}
-        captureAudio={false}
-      >
+        captureAudio={false}>
         {({ camera, status }) => {
-          /*
-           *if (status === 'NOT_AUTHORIZED'){
-           *  console.log({ status });
-           *  return <CameraStatus message="No autorizado" />
-           *} 
-           *if (status === 'PENDING_AUTHORIZATION'){
-           *  console.log({ status });
-           *  return <CameraStatus message="Es pendiente" />
-           *}
-           */
           if (status === 'READY'){
-            console.log({ status });
+            //console.log({ status });
             return (
               <CameraInterface 
                 camera={camera} 

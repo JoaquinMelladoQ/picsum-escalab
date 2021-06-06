@@ -77,7 +77,7 @@ Press on register button and add a new email and password
 
 ### 3.- Sign in with Google (only for Android)
 
-# Personal information:
+# Personal information: 
 ## Developer name:
 Joaquín Andrés Mellado Quevedo
 ## Email:

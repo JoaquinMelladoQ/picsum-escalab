@@ -2,29 +2,30 @@ import React from 'react';
 import { 
   StyleSheet, 
   View, 
-  Text,
   SafeAreaView,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import colors from '../../configs/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconIonicons from 'react-native-vector-icons/Ionicons';
+import IconDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/core';
 
-const { width, height } = Dimensions.get('screen')
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
     paddingHorizontal: 20,
   },
   photoBoxContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  containerTopButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 10,
+    padding: 5,
   },
   photoBoxCircle: {
     width: 200, 
@@ -65,29 +66,32 @@ const CameraInterface = ({ camera, takePicture }) => {
   return (
     <>
       <SafeAreaView style={styles.container}>
+        <View style={styles.containerTopButton}>
+          <TouchableOpacity
+            onPress={() => {}}>
+            <IconDesign 
+              name="setting" 
+              color={colors.gray} 
+              size={30} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.pop()}>
+            <Icon 
+              name="close" 
+              color={colors.gray} 
+              size={30} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.photoBoxContainer}>
-          <View style={styles.photoBoxCircle}>
-          </View>
-          <View style={styles.bottomButtons}>
-            <TouchableOpacity
-              onPress={() => navigation.pop()}>
-              <Icon 
-                name="keyboard-backspace" 
-                color={colors.darkBlue} 
-                size={40} />
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.captureButtonContainer}
-              onPress={() => takePicture(camera)}>
-              <View style={styles.captureInnerButtonContainer} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <IconIonicons 
-                name="camera-reverse-outline" 
-                color={colors.darkBlue} 
-                size={40} />
-            </TouchableOpacity>
-          </View>
+        <View style={styles.photoBoxCircle}>
+        </View>
+        <View style={styles.bottomButtons}>
+          <TouchableOpacity 
+            style={styles.captureButtonContainer}
+            onPress={() => takePicture(camera)}>
+            <View style={styles.captureInnerButtonContainer} />
+          </TouchableOpacity>
+        </View>
         </View>
       </SafeAreaView>
     </>
