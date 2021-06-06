@@ -26,7 +26,7 @@ export const useUserInformation = () => {
   const context = useContext(UserContext);
 
   if (context === undefined) {
-    throw new Error('useUserInformation debe ser usado dentro de UserHandler')
+    throw new Error('Error at context')
   }
   return context;
 };

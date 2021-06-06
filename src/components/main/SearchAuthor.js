@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.summerSky,
     marginBottom: 9,
-    marginVertical: '40%',
+    marginVertical: '20%',
     marginHorizontal: 40,
   },
   closeTextButton: {

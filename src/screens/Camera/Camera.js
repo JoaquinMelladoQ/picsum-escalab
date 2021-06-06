@@ -1,8 +1,6 @@
 import React from 'react';
 import { 
   StyleSheet, 
-  View, 
-  Text,
   SafeAreaView,
 } from 'react-native';
 import { RNCamera } from 'react-native-camera';
@@ -37,7 +35,6 @@ const Camera = () => {
   const takePicture = async (camera) => {
     const options = { quality: 0.5, base64: true }
     const data = await camera.takePictureAsync(options);
-    //console.log({ data });
     if (data.uri) {
       setPhoto(data.uri);
       navigation.navigate('PhotoList');
@@ -54,7 +51,6 @@ const Camera = () => {
         captureAudio={false}>
         {({ camera, status }) => {
           if (status === 'READY'){
-            //console.log({ status });
             return (
               <CameraInterface 
                 camera={camera} 

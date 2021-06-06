@@ -83,6 +83,18 @@ const styles = StyleSheet.create({
     color: colors.softBlue,
     textAlign: 'center',
   },
+  buttonEditContainer: {
+    marginTop: 5,
+    backgroundColor: colors.summerSky,
+    padding: 5,
+    borderRadius: 25,
+  },
+  textEditButton: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.darkBlue,
+  },
 });
 
 const Profile = () => {
@@ -160,6 +172,12 @@ const Profile = () => {
               toggleModalEditPhoto={toggleModalEditPhoto}
             />
           </Modal>
+          <View style={styles.buttonEditContainer}>
+            <TouchableOpacity 
+              onPress={toggleModalEditPhoto}>
+              <Text style={styles.textEditButton}>Editar</Text>
+            </TouchableOpacity>
+          </View>
           <View style={styles.containerDetailsSection}>
             <Text style={styles.infoText}>{info}</Text>
             <Text style={styles.webText}>{web}</Text>

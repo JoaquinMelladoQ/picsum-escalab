@@ -1,21 +1,28 @@
 # Picsum 
 ## Introduction
-**Picsum** is mobile app for professional photography, where you can see different styles and get some inspiration for your personal work. It was built with React Native.
+**Picsum** is a mobile app (IOS and Android) for professional photography where you can check different styles and get some inspiration for your personal work. It was built with React Native.
 
 ## Features
 **Picsum** has the following features:
 - Authentication with google (Android), and also you can create an account for your own with email and password.
 - Scroll down to see which photographers are included
 - Search by author: Navigate to a specific work once you have the name of a photographer.
-- Like: you will be able to like a photo by pressing a classic heart icon.
+- Like: you will be able to like a photo by pressing the classic heart icon.
 - Take a picture: you can change your current avatar photo by creating a new one with front camera.
-- Upload a picture: Once you navigate to profile, you'll be able to change your avatar photo by uploading a new one.
-- Dark Theme: change the theme of Picsum in order to be more comfortable. 
+- Upload a picture: Once you navigate to the profile screen, you'll be able to change your avatar photo by uploading a new one from storage.
+- Dark Theme: change the theme of Picsum in order to be more comfortable while you navigate. 
+- Edit personal information such as biography, username and website.
 
 # For developers
 ## How **Picsum** was built?  
 ## Git workflow 
 ![Git workflow](./src/assets/gitworkflow.png)
+
+## Architecture:
+
+- Firebase Auth
+- React Native Camera
+- Redux (thunk) and context
 
 # Instructions for use
 ## Clone this repository
@@ -43,7 +50,7 @@ command for android:
 
 `npx react-native run-android`
 
-### Screeshots
+### Screeshots (left for IOS and Android at the right side)
 Initial screen:
 
 ![Initialview](./src/assets/initialview.png)
@@ -56,9 +63,9 @@ Main screen:
 
 ![Mainscroll](./src/assets/mainscroll.png)
 
-Picture screen:
+Photo screen:
 
-![Pictureview](./src/assets/pictureview.png)
+![Photoview](./src/assets/pictureview.png)
 
 Change profile screen:
 
