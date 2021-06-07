@@ -5,6 +5,7 @@ import HomeNavigation from './HomeStack';
 import LoginNavigator from './LoginStack';
 import { AuthContext } from '../contexts/firebase/AuthProvider';
 import auth from '@react-native-firebase/auth';
+import BottomNavigation from './BottomTabStack';
 
 const RootStack = createStackNavigator();
 
@@ -28,9 +29,16 @@ const RootNavigation = () => {
     <NavigationContainer>
       <RootStack.Navigator headerMode="none">
         { 
-          !user 
-          ? ( <RootStack.Screen name="LoginNavigator" component={LoginNavigator} /> ) 
-          : ( <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> )
+          !user ? ( 
+            <RootStack.Screen name="LoginNavigator" component={LoginNavigator} /> 
+          ) : ( 
+          <>
+            <RootStack.Screen
+              name="BottomTabNavigator"
+              component={BottomNavigation}
+            />
+          </>
+          )
         }
       </RootStack.Navigator>
     </NavigationContainer>
@@ -38,3 +46,4 @@ const RootNavigation = () => {
 };
 
 export default RootNavigation;
+//            <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> 
