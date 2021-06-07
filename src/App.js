@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Theme from './contexts/Theme';
 import { AuthProvider } from './contexts/firebase/AuthProvider';
+import UserHandler from './contexts/user/UserHandler';
 
 const App = () => {
   return (
@@ -13,7 +14,9 @@ const App = () => {
       <Provider store={store}>
         <AuthProvider>
           <Theme>
-            <RootNavigation />
+            <UserHandler>
+              <RootNavigation />
+            </UserHandler>
           </Theme>
         </AuthProvider>
       </Provider>

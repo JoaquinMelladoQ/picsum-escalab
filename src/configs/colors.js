@@ -15,6 +15,8 @@ const colors = {
   liked: '#e31b23',
   gray: '#7f8c8d',
   silver: '#bdc3c7',
+  sarawak: '#F8EFBA',
+  swanWhite: '#f7f1e3',
 };
 
 export default colors;

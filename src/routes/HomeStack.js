@@ -4,6 +4,9 @@ import Home from '../screens/Home';
 import Profile from '../screens/ProfileScreens/Profile';
 import GoToProfile from '../screens/ProfileScreens/GoToProfile';
 import ImageList from '../components/ImageList';
+import Camera from '../screens/Camera/Camera';
+import CameraButtons from '../screens/Camera/CameraButtons';
+import PhotoList from '../screens/Camera/PhotoList';
 
 const HomeStack = createStackNavigator();
 
@@ -15,6 +18,9 @@ const HomeNavigation = () => {
       <HomeStack.Screen name="ImageList" component={ImageList} />
       <HomeStack.Screen name="Profile" component={Profile} />
       <HomeStack.Screen name="GoToProfile" component={GoToProfile} />
+      <HomeStack.Screen name="CameraButtons" component={CameraButtons} />
+      <HomeStack.Screen name="Camera" component={Camera} />
+      <HomeStack.Screen name="PhotoList" component={PhotoList} />
     </HomeStack.Navigator>
   );
 };

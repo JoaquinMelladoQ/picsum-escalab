@@ -16,6 +16,7 @@ import { useRoute, useNavigation } from '@react-navigation/core';
 import DetailsProfile from './DetailsProfile';
 import Icon from 'react-native-vector-icons/AntDesign';
 import ChangePhoto from '../Camera/ChangePhoto';
+import { useUserInformation } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
@@ -82,11 +83,24 @@ const styles = StyleSheet.create({
     color: colors.softBlue,
     textAlign: 'center',
   },
+  buttonEditContainer: {
+    marginTop: 5,
+    backgroundColor: colors.summerSky,
+    padding: 5,
+    borderRadius: 25,
+  },
+  textEditButton: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.darkBlue,
+  },
 });
 
 const Profile = () => {
   const { params: { info, web, userName } } = useRoute();
   const navigation = useNavigation();
+  const { photo } = useUserInformation();
   
   const [modal, setModal] = useState(false);
   const [modalPhoto, setModalPhoto] = useState(false);
@@ -130,31 +144,40 @@ const Profile = () => {
           <View style={styles.containerTitle}>
             <Text style={styles.title}>Editar perfil</Text>
           </View>
-          { photoURL ? (
-            <TouchableOpacity
-              onPress={() => toggleModalEditPhoto()}>
-              <Image 
-                style={styles.userAvatar}
-                source={{ uri: photoURL }}
-              />
-            </TouchableOpacity>
-          ) : (
+          { 
+            photoURL ? (
+              <TouchableOpacity
+                onPress={() => toggleModalEditPhoto()}>
+                <Image 
+                  style={styles.userAvatar}
+                  source={{ uri: photoURL }}
+                />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity 
+                onPress={() => toggleModalEditPhoto()}>
+                <Image
+                  style={styles.userAvatar}
+                  source={
+                    photo ? { uri: photo } 
+                          : require('../../assets/no-avatar.jpeg')}/>
+              </TouchableOpacity>
+            ) 
+          }
+          <Modal
+            transparent={true}
+            visible={modalPhoto}
+            animationType="slide">
+            <ChangePhoto 
+              toggleModalEditPhoto={toggleModalEditPhoto}
+            />
+          </Modal>
+          <View style={styles.buttonEditContainer}>
             <TouchableOpacity 
-              onPress={() => toggleModalEditPhoto()}>
-              <Image
-                style={styles.userAvatar}
-                source={require('../../assets/no-avatar.jpeg')}
-              />
+              onPress={toggleModalEditPhoto}>
+              <Text style={styles.textEditButton}>Editar</Text>
             </TouchableOpacity>
-          ) }
-            <Modal
-              transparent={true}
-              visible={modalPhoto}
-              animationType="slide">
-              <ChangePhoto 
-                toggleModalEditPhoto={toggleModalEditPhoto}
-              />
-            </Modal>
+          </View>
           <View style={styles.containerDetailsSection}>
             <Text style={styles.infoText}>{info}</Text>
             <Text style={styles.webText}>{web}</Text>
