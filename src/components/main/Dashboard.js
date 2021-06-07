@@ -10,6 +10,7 @@ import colors from '../../configs/colors';
 import { useNavigation } from '@react-navigation/core';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconDesign from 'react-native-vector-icons/AntDesign';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import SearchAuthor from './SearchAuthor';
 
@@ -33,7 +34,8 @@ const styles = StyleSheet.create({
   textButton: {
     fontSize: 12,
     justifyContent: 'center',
-    alignSelf: 'center',
+    paddingTop: 5,
+    textAlign: 'center',
     fontWeight: 'bold',
     color: colors.freshWhite,
   },
@@ -105,7 +107,7 @@ const Dashboard = ({ apiReducer }) => {
         <View style={styles.button}>
           <TouchableOpacity 
             onPress={() => logout()}>
-            <Icon 
+            <IconDesign 
               size={30}
               name="logout"
               color={colors.freshWhite}

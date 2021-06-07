@@ -11,7 +11,6 @@ import {
 import { ThemeContext } from '../../contexts/Theme';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import colors from '../../configs/colors';
-import { useRoute } from '@react-navigation/core';
 import DetailsProfile from './DetailsProfile';
 import ChangePhoto from '../Camera/ChangePhoto';
 import { useUserInformation } from '../../contexts/user/UserHandler';
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: '2%',
     paddingVertical: '1%',
-    marginTop: '10%',
+    paddingTop: '12%',
   },
   containerTitle: {
     padding: 20,
@@ -92,14 +91,11 @@ const styles = StyleSheet.create({
 });
 
 const Profile = () => {
-  const { params: { info, web, userName } } = useRoute();
-  const { photo } = useUserInformation();
-  
   const [modal, setModal] = useState(false);
   const [modalPhoto, setModalPhoto] = useState(false);
-
   const { mainTheme, toggleDarkMode, darkModeEnabled } = useContext(ThemeContext);
   const { user: { photoURL } } = useContext(AuthContext);
+  const { photo, info, web, userName } = useUserInformation();
 
   const toggleModal = () => setModal(!modal);
   const toggleModalEditPhoto = () => setModalPhoto(!modalPhoto);

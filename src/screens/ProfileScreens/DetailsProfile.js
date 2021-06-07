@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useContext } from 'react';
 import { 
   StyleSheet, 
   View, 
@@ -9,7 +8,8 @@ import {
 } from 'react-native';
 import colors from '../../configs/colors';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
-import { useRoute, useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
+import { useUserInformation } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,60 +46,21 @@ const styles = StyleSheet.create({
 });
 
 const DetailsProfile = ({ toggleModal }) => {
-  const routes = useRoute();
   const navigation = useNavigation();
-  const [info, setInfo] = useState('', routes.params.info);
-  const [web, setWeb] = useState('', routes.params.web);
-  const [userName, setUserName] = useState('', routes.params.userName);
   const { user: { displayName, email } } = useContext(AuthContext);
-
-  const infoAsyncStorageKey = 'info';
-  const webAsyncStorageKey = 'web';
-  const userAsyncStorageKey = 'user';
-
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem(infoAsyncStorageKey, JSON.stringify(info))
-      await AsyncStorage.setItem(webAsyncStorageKey, JSON.stringify(web))
-      await AsyncStorage.setItem(userAsyncStorageKey, JSON.stringify(userName))
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const getData = async () => {
-    try {
-      const infoSavedData = JSON.parse(
-        await AsyncStorage.getItem(infoAsyncStorageKey),
-      );
-      const webSavedData = JSON.parse(
-        await AsyncStorage.getItem(webAsyncStorageKey),
-      );
-      const userNameSavedData = JSON.parse(
-        await AsyncStorage.getItem(userAsyncStorageKey),
-      );
-        if (infoSavedData && webSavedData && userNameSavedData) {
-          setInfo(infoSavedData)
-          setWeb(webSavedData)
-          setUserName(userNameSavedData)
-        }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const { 
+    setInfo, 
+    setWeb, 
+    setUserName,
+    info,
+    web,
+    userName,
+  } = useUserInformation();
 
   const navigateFunction = () => {
     toggleModal(false)
-    navigation.navigate('GoToProfile', {
-      info,
-      web,
-      userName
-    })
+    navigation.navigate('GoToProfile')
   };
-
-  useEffect(() => {
-    storeData();
-    getData();
-  }, [])
 
   return (
     <View style={styles.container}>
@@ -116,7 +77,7 @@ const DetailsProfile = ({ toggleModal }) => {
           placeholderTextColor={colors.debilBlue}
           style={styles.textDetail}
           value={info}
-          onChangeText={info => setInfo(info)}>
+          onChangeText={textInfo => setInfo(textInfo)}>
         </TextInput>
       <Text style={styles.titleItems}>Sitio web:</Text>
         <TextInput 
@@ -124,7 +85,7 @@ const DetailsProfile = ({ toggleModal }) => {
           placeholderTextColor={colors.debilBlue}
           style={styles.textDetail}
           value={web}
-          onChangeText={web => setWeb(web)}>
+          onChangeText={textWeb => setWeb(textWeb)}>
         </TextInput>
       <Text style={styles.titleItems}>Nombre de usuario:</Text>
         <TextInput 
@@ -132,7 +93,7 @@ const DetailsProfile = ({ toggleModal }) => {
           placeholderTextColor={colors.debilBlue}
           style={styles.textDetail}
           value={userName}
-          onChangeText={userName => setUserName(userName)}>
+          onChangeText={textUserName => setUserName(textUserName)}>
         </TextInput>
       <Text style={styles.titleItems}>Correo electronico:</Text>
       <Text style={styles.textDetail}>{email}</Text>
