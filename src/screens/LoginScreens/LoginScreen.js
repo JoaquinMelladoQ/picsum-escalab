@@ -45,17 +45,17 @@ const Login = ({ user }) => {
 
   return (
     <>
-        <View style={styles.main}>
-          <ImageBackground 
-            source={image}
-            style={styles.mainImage}
-            blurRadius={15}>
-            <View style={styles.containerWelcomeText}>
-              <Text style={styles.textWelcome}>Te damos la bienvenida a Picsum</Text>
-            </View>
-              <LoginButton />
-          </ImageBackground>
-        </View>
+      <View style={styles.main}>
+        <ImageBackground 
+          source={image}
+          style={styles.mainImage}
+          blurRadius={15}>
+          <View style={styles.containerWelcomeText}>
+            <Text style={styles.textWelcome}>Te damos la bienvenida a Picsum</Text>
+          </View>
+          <LoginButton />
+        </ImageBackground>
+      </View>
     </>
   );
 };

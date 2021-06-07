@@ -102,23 +102,19 @@ const styles = StyleSheet.create({
     width: '90%',
     alignItems: 'center',
   },
-  textOcontainer: {
+  textContainer: {
     paddingHorizontal: 10,
     paddingVertical: 20,
     backgroundColor: colors.freshWhite,
   },
-  textO: {
+  text: {
     fontSize: 19,
     textAlign: 'center',
   },
 });
 
 const LoginButton = () => {
-
-  const { 
-    login, 
-    googleLogin,
-  } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
 
   const [modal, setModal] = useState(false);
 
@@ -156,28 +152,37 @@ const LoginButton = () => {
                   (
                 <>
                 <View style={styles.containerEnterButton}>
-                    <TouchableOpacity 
-                      style={styles.fakeGoogleButton}
-                      onPress={() => googleLogin()}>
-                      <Text style={styles.textEnterButton}>Iniciar sesion con Google</Text>
-                    </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.fakeGoogleButton}
+                    onPress={() => googleLogin()}>
+                    <Text 
+                      style={styles.textEnterButton}>
+                      Iniciar sesion con Google
+                    </Text>
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.containerEnterButton}>
-                    <TouchableOpacity 
-                      style={styles.fakeFacebookButton}
-                      onPress={() => alert('Todavia no esta habilitada esta opcion, en desarrollo')}>
-                      <Text 
-                        style={styles.textEnterButton}>
+                  <TouchableOpacity 
+                    style={styles.fakeFacebookButton}
+                    onPress={() => alert('Todavia no esta habilitada esta opcion, en desarrollo')}>
+                    <Text 
+                      style={styles.textEnterButton}>
                       Iniciar sesion con Facebook
-                      </Text>
-                    </TouchableOpacity>
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.textContainer}>
+                  <Text 
+                    style={styles.text}>
+                      O ingresa tu correo electronico y contraseña aqui: 
+                  </Text>
                 </View>
                 </>
               ) : null }
-              <View style={styles.textOcontainer}>
+              <View style={styles.textContainer}>
                 <Text 
-                  style={styles.textO}>
-                O ingresa tu correo electronico y contraseña aqui: 
+                  style={styles.text}>
+                    ingresa tu correo electronico y contraseña aqui: 
                 </Text>
               </View>
               <View style={styles.inputsContainer}>
@@ -187,7 +192,7 @@ const LoginButton = () => {
                   autoCapitalize="none"
                   value={userName}
                   onChangeText={name => setUserName(name)}
-                  style={[styles.textInput,focusNameInput && styles.inputFocusColor,]}
+                  style={[styles.textInput,focusNameInput && styles.inputFocusColor]}
                   onFocus={() => setFocusNameInput(true)}
                   onBlur={() => {
                     setFocusNameInput(false);
@@ -200,10 +205,7 @@ const LoginButton = () => {
                   autoCapitalize="none"
                   value={userPassword}
                   onChangeText={password => setUserPassword(password)}
-                  style={[
-                    styles.textInput,
-                    focusPasswordInput && styles.inputFocusColor,
-                  ]}
+                  style={[styles.textInput, focusPasswordInput && styles.inputFocusColor]}
                   onFocus={() => setFocusPasswordInput(true)}
                   onBlur={() => setFocusPasswordInput(false)}
                   secureTextEntry={true}
@@ -216,10 +218,11 @@ const LoginButton = () => {
                   <Text style={styles.textEnterButton}>Iniciar sesion</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.textOcontainer}>
-                <Button  
-                  title="Has olvidado tu contraseña?"
-                  onPress={() => alert('En construccion')}/>
+              <View style={styles.textContainer}>
+                <TouchableOpacity
+                  onPress={() => alert('En construccion')}>
+                  <Text style={styles.text}>Has olvidado tu contraseña?</Text>
+                </TouchableOpacity>
               </View>
             </KeyboardAwareScrollView>
           </View>
