@@ -7,7 +7,7 @@
 - Authentication with Google (Android), and also you can create an account for your own, with email and password.
 - Scroll down to see which photographers are included.
 - Search by author: Navigate to a specific work once you have selected a photographer.
-- Like: you will be able to like a photo by pressing the classic heart icon.
+- Like: You will be able to like a photo by pressing the classic heart icon.
 - Take a picture: You can change your current avatar photo by creating a new one with the front camera of your device.
 - Upload a picture: Once you have entered to profile screen, you will be able to change your avatar photo by uploading a new one from storage.
 - Dark Theme: Change the theme of Picsum in order to be more comfortable while you are navigating. 
