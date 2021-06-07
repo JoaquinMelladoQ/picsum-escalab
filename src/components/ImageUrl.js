@@ -67,73 +67,73 @@ export default class ImageUrl extends Component {
 
     return (
       <>
-         <View style={styles.container}>
-          <ImageBackground 
-            source={{ uri: download_url }}
-            style={styles.image}
-            onError={(e) => console.log(e.nativeEvent.error) } 
-            resizeMode="cover">
-            <View style={styles.gobackButtonContainer}>
-              <TouchableOpacity 
-                onPress={() => navigation.pop()}>
-                <Icon 
-                  size={30}
-                  color={colors.clouds}
-                  name="keyboard-backspace"
-                />
-              </TouchableOpacity>
-              <View>
-                <Text>{author}</Text>
-              </View>
+       <View style={styles.container}>
+        <ImageBackground 
+          source={{ uri: download_url }}
+          style={styles.image}
+          onError={(e) => console.log(e.nativeEvent.error) } 
+          resizeMode="cover">
+          <View style={styles.gobackButtonContainer}>
+            <TouchableOpacity 
+              onPress={() => navigation.pop()}>
+              <Icon 
+                size={30}
+                color={colors.clouds}
+                name="keyboard-backspace"
+              />
+            </TouchableOpacity>
+            <View>
+              <Text>{author}</Text>
             </View>
-            <View style={styles.IconsContainer}>
-              <TouchableOpacity
-                onPress={this.likeFunction}>
-               <Icon 
-                 size={55}
-                 color={ like ? colors.liked : colors.clouds}
-                 name="heart"
-               />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={this.toggleMessegesModal}>
-                <Icon 
-                  size={55}
-                  color={colors.clouds}
-                  name="comment"
-                />
-                <Modal
-                  transparent={true}
-                  visible={modal}
-                  animationType="slide">
-                  <View style={styles.modalCloseButton}>
-                    <TouchableOpacity onPress={this.toggleMessegesModal}>
-                      <Text style={styles.modalCloseButtonText}>Cerrar</Text>
-                    </TouchableOpacity>
-                  </View>
-                </Modal>
-              </TouchableOpacity>
-              <TouchableOpacity 
-                onPress={this.toggleShareModal}>
-                <Icon 
-                  size={55}
-                  color={colors.clouds}
-                  name="share"
-                />
-                <Modal
-                  transparent={true}
-                  visible={modalToShare}
-                  animationType="fade">
-                  <View style={styles.modalCloseButton}>
-                    <TouchableOpacity onPress={this.toggleShareModal}>
-                      <Text style={styles.modalCloseButtonText}>Cerrar</Text>
-                    </TouchableOpacity>
-                  </View>
-                </Modal>
-              </TouchableOpacity>
-            </View>
-          </ImageBackground>
-        </View> 
+          </View>
+          <View style={styles.IconsContainer}>
+            <TouchableOpacity
+              onPress={this.likeFunction}>
+             <Icon 
+               size={55}
+               color={ like ? colors.liked : colors.clouds}
+               name="heart"
+             />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={this.toggleMessegesModal}>
+              <Icon 
+                size={55}
+                color={colors.clouds}
+                name="comment"
+              />
+              <Modal
+                transparent={true}
+                visible={modal}
+                animationType="slide">
+                <View style={styles.modalCloseButton}>
+                  <TouchableOpacity onPress={this.toggleMessegesModal}>
+                    <Text style={styles.modalCloseButtonText}>Cerrar</Text>
+                  </TouchableOpacity>
+                </View>
+              </Modal>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={this.toggleShareModal}>
+              <Icon 
+                size={55}
+                color={colors.clouds}
+                name="share"
+              />
+              <Modal
+                transparent={true}
+                visible={modalToShare}
+                animationType="fade">
+                <View style={styles.modalCloseButton}>
+                  <TouchableOpacity onPress={this.toggleShareModal}>
+                    <Text style={styles.modalCloseButtonText}>Cerrar</Text>
+                  </TouchableOpacity>
+                </View>
+              </Modal>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+       </View> 
       </>
     );
   };

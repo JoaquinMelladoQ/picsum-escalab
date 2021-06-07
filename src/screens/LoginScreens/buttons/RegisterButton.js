@@ -98,32 +98,32 @@ const RegisterButton = () => {
         animationType="fade">
         <View style={styles.modal}>
           <KeyboardAwareScrollView extraScrollHeight={20}>
-              <View style={styles.inputsContainer}>
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="Correo electronico"
-                  autoCapitalize="none"
-                  value={email}
-                  keyboardType="email-address"
-                  onChangeText={userEmail => setEmail(userEmail)}
-                />
-                <TextInput
-                  style={styles.textInput}
-                  placeholder="Tu contraseña"
-                  autoCapitalize="none"
-                  value={password}
-                  onChangeText={userPassword => setPassword(userPassword)}
-                  secureTextEntry={true}
-                />
-              </View>
-              <View style={styles.containerEnterButton}>
-                <TouchableOpacity 
-                  style={styles.enterButton}
-                  onPress={() => register(email, password)}>
-                  <Text style={styles.textEnterButton}>Registrate e inicia sesion</Text>
-                </TouchableOpacity>
-              </View>
-            </KeyboardAwareScrollView>
+            <View style={styles.inputsContainer}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Correo electronico"
+                autoCapitalize="none"
+                value={email}
+                keyboardType="email-address"
+                onChangeText={userEmail => setEmail(userEmail)}
+              />
+              <TextInput
+                style={styles.textInput}
+                placeholder="Tu contraseña"
+                autoCapitalize="none"
+                value={password}
+                onChangeText={userPassword => setPassword(userPassword)}
+                secureTextEntry={true}
+              />
+            </View>
+            <View style={styles.containerEnterButton}>
+              <TouchableOpacity 
+                style={styles.enterButton}
+                onPress={() => register(email, password)}>
+                <Text style={styles.textEnterButton}>Registrate e inicia sesion</Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAwareScrollView>
         </View>
         <View style={styles.containerCerrarButton}>
           <Button

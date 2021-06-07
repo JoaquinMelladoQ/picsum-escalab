@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
 const PhotoList = () => {
   const { photo } = useUserInformation();
   const navigation = useNavigation();
-  //console.log({ photo });
   
   return (
     <View style={styles.container}>
