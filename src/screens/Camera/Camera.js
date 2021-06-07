@@ -46,7 +46,7 @@ const Camera = () => {
     <SafeAreaView style={styles.container}>
       <RNCamera 
         style={{ flex: 1, height: '100%'}}
-        type={RNCamera.Constants.Type.back}
+        type={RNCamera.Constants.Type.front}
         flashMode={RNCamera.Constants.FlashMode.on}
         captureAudio={false}>
         {({ camera, status }) => {

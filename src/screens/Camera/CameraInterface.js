@@ -83,15 +83,15 @@ const CameraInterface = ({ camera, takePicture }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.photoBoxContainer}>
-        <View style={styles.photoBoxCircle}>
-        </View>
-        <View style={styles.bottomButtons}>
-          <TouchableOpacity 
-            style={styles.captureButtonContainer}
-            onPress={() => takePicture(camera)}>
-            <View style={styles.captureInnerButtonContainer} />
-          </TouchableOpacity>
-        </View>
+          <View style={styles.photoBoxCircle}>
+          </View>
+          <View style={styles.bottomButtons}>
+            <TouchableOpacity 
+              style={styles.captureButtonContainer}
+              onPress={() => takePicture(camera)}>
+              <View style={styles.captureInnerButtonContainer} />
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </>
