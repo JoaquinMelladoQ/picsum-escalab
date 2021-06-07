@@ -3,10 +3,12 @@ import {
   StyleSheet, 
   View, 
   Text,
-  Button
+  TouchableOpacity,
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/core';
 import colors from '../../configs/colors'
+import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +32,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  buttonContainer: {
+    marginTop: '10%',
+    marginLeft: 10,
+    backgroundColor: colors.marineBlue,
+    padding: 10,
+    borderRadius: 25,
+    width: '13%',
+  },
+  textButton: {
+    color: colors.freshWhite,
+    textAlign: 'center',
+  },
 });
 
 const GoToProfile = (props) => {
@@ -42,27 +60,42 @@ const GoToProfile = (props) => {
   } = useRoute();
   const navigation = useNavigation();
 
+  const confirmData = () => {
+    navigation.navigate('Profile', {
+      info,
+      web,
+      userName
+    })
+  };
   return (
     <>
-      <View>
-        <Button title="Volver" onPress={() => navigation.navigate('Profile', {
-          info,
-          web,
-          userName
-        })}/>
+      <View style={styles.buttonsContainer}> 
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <Icon 
+              name="chevron-back" 
+              size={30} 
+              color={colors.freshWhite}/>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={confirmData}>
+            <MaterialIcon 
+              name="done" 
+              size={30} 
+              color={colors.freshWhite}/>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.container}>
-        <View style={styles.mainTitleContainer}>
-          <Text style={styles.mainTitleText}>Profile</Text>
-        </View>
         <View style={styles.contentFromData}>
           <Text>{info}</Text>
           <Text>{web}</Text>
           <Text>{userName}</Text>
         </View>
-      </View>
-      <View>
-        <Button title="Confirmar y guardar" onPress={() => {}}/>
+        <View style={styles.mainTitleContainer}>
+          <Text style={styles.mainTitleText}>Profile</Text>
+        </View>
       </View>
     </>
   );

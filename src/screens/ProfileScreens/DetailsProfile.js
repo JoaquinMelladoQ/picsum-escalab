@@ -87,6 +87,15 @@ const DetailsProfile = ({ toggleModal }) => {
     }
   };
 
+  const navigateFunction = () => {
+    toggleModal(false)
+    navigation.navigate('GoToProfile', {
+      info,
+      web,
+      userName
+    })
+  };
+
   useEffect(() => {
     storeData();
     getData();
@@ -129,11 +138,7 @@ const DetailsProfile = ({ toggleModal }) => {
       <Text style={styles.textDetail}>{email}</Text>
       <View style={styles.containerSaveButton}>
         <TouchableOpacity 
-          onPress={()=> navigation.navigate('GoToProfile', {
-            info,
-            web,
-            userName
-          })}>
+          onPress={navigateFunction}>
           <Text style={styles.textSave}>Guardar</Text>
         </TouchableOpacity>
       </View>

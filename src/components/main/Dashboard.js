@@ -15,6 +15,7 @@ import SearchAuthor from './SearchAuthor';
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: '0.5%',
     padding: 20,
     borderRadius: 35,
     marginHorizontal: 20,
