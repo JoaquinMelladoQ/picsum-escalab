@@ -13,23 +13,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 10,
     marginTop: '95%',
-    backgroundColor: colors.midnightBlue,
+    backgroundColor: colors.swanWhite,
     borderRadius: 10,
     borderWidth: 1,
-  },
-  closeButtonContainer: {
-    backgroundColor: colors.summerSky,
-    borderWidth: 1,
-    borderRadius: 25,
-    marginTop: '45%',
-    marginHorizontal: 90,
-    paddingVertical: '5%',
-  },
-  textCloseButton: {
-    alignItems: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: colors.freshWhite,
+    shadowOpacity: 2,
   },
   containerList: {
     paddingHorizontal: '30%',
@@ -50,7 +37,24 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     backgroundColor: colors.silver, 
     marginHorizontal: '10%',
+    marginVertical: '5%',
     borderRadius: 25,
+  },
+  closeButton: {
+    borderRadius: 25,
+    paddingVertical: 15,
+    justifyContent: 'center',
+    backgroundColor: colors.summerSky,
+    marginBottom: 9,
+    marginVertical: '20%',
+    marginHorizontal: 40,
+  },
+  closeTextButton: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignItems: 'center', 
+    textAlign: 'center',
+    color: colors.freshWhite,
   },
 });
 
@@ -90,9 +94,9 @@ const SearchAuthor = ({ toggleModalSearch, apiReducer }) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity 
-          style={styles.closeButtonContainer}
+          style={styles.closeButton}
           onPress={() => toggleModalSearch()}>
-          <Text style={styles.textCloseButton}>Cancelar</Text>
+          <Text style={styles.closeTextButton}>Cancelar</Text>
         </TouchableOpacity>
       </View>
     </>
