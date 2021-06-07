@@ -4,7 +4,6 @@ import {
   View, 
   Switch,
   Image,
-  Button,
   Text,
   TouchableOpacity,
   Modal,
@@ -12,17 +11,18 @@ import {
 import { ThemeContext } from '../../contexts/Theme';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import colors from '../../configs/colors';
-import { useRoute, useNavigation } from '@react-navigation/core';
+import { useRoute } from '@react-navigation/core';
 import DetailsProfile from './DetailsProfile';
-import Icon from 'react-native-vector-icons/AntDesign';
 import ChangePhoto from '../Camera/ChangePhoto';
 import { useUserInformation } from '../../contexts/user/UserHandler';
+import OptionButtons from './OptionButtons';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: '2%',
     paddingVertical: '1%',
+    marginTop: '10%',
   },
   containerTitle: {
     padding: 20,
@@ -50,13 +50,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: 'center',
   },
-  containerSettingButton: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    marginTop: 5,
-    borderRadius: 25,
-    paddingBottom: 1,
-  },
   textEdit: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -69,6 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   containerDetailsSection: {
+    marginTop: '10%',
     backgroundColor: 'transparent',
   },
   infoText: {
@@ -99,7 +93,6 @@ const styles = StyleSheet.create({
 
 const Profile = () => {
   const { params: { info, web, userName } } = useRoute();
-  const navigation = useNavigation();
   const { photo } = useUserInformation();
   
   const [modal, setModal] = useState(false);
@@ -113,9 +106,6 @@ const Profile = () => {
 
   return (
     <>
-      <View>
-        <Button title="Volver" onPress={() => navigation.pop()}/>
-      </View>
       <View 
         style={[styles.container, { 
         backgroundColor: mainTheme.backgroundColor, 
@@ -127,19 +117,9 @@ const Profile = () => {
           ios_backgroundColor={colors.green}
           onValueChange={() => toggleDarkMode()}
           value={darkModeEnabled}/>
-          <View style={styles.containerSettingButton}>
-            <TouchableOpacity
-              onPress={() => toggleModal()}>
-              <Icon 
-                size={32}
-                color={colors.summerSky}
-                name="setting"
-              />
-            </TouchableOpacity>
-          </View>
-        <View style={styles.containerDetailsSection}>
-          <Text style={styles.infoText}>{userName}</Text>
-        </View>
+        <OptionButtons 
+          toggleModal={toggleModal}
+        />
         <View style={styles.containerDetails}>
           <View style={styles.containerTitle}>
             <Text style={styles.title}>Editar perfil</Text>
@@ -179,6 +159,7 @@ const Profile = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.containerDetailsSection}>
+            <Text style={styles.infoText}>{userName}</Text>
             <Text style={styles.infoText}>{info}</Text>
             <Text style={styles.webText}>{web}</Text>
           </View>
