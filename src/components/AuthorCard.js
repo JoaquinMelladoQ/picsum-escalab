@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
     color: colors.midnightBlue,
     marginVertical: 20,
     fontSize: 25,
+    textAlign: 'center',
   },
 });
 
-const AuthorCard = ({ author, download_url, id }) => {
-  const routes = { download_url, author }
+const AuthorCard = ({ author, download_url }) => {
   const navigation = useNavigation();
 
   return (
@@ -45,7 +45,7 @@ const AuthorCard = ({ author, download_url, id }) => {
             download_url,
             author,
           })}>
-          <View key={id}>
+          <View>
             <Image 
               source={{ uri: download_url }}
               resizeMode="cover"
@@ -54,12 +54,11 @@ const AuthorCard = ({ author, download_url, id }) => {
               height: 260, 
               width: 170, 
               borderRadius: 20, 
-              }}
-            />
+              }} />
+            <Text style={styles.text}>
+              {author}
+            </Text>
           </View>
-          <Text style={styles.text}>
-            {author}
-          </Text>
         </TouchableOpacity>
       </SafeAreaView>
     </>
