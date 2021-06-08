@@ -5,6 +5,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import AuthorCard from './AuthorCard';
+import MasonryList from '@react-native-seoul/masonry-list';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,13 +24,19 @@ export default class AuthorList extends Component {
     return (
       <>
        <SafeAreaView style={styles.container}>
-        <FlatList 
+        <MasonryList 
+          numColumns={2}
+          contentContainerStyle={{
+            paddingHorizontal: 30,
+            alignSelf: 'stretch'
+          }}
           data={apiReducer}
           keyExtractor={({ id }) => id}
           renderItem={({
             item: {
               download_url,
               author,
+              id
             }
           }) => {
             return (
@@ -38,6 +45,7 @@ export default class AuthorList extends Component {
                   color={color}
                   author={author}
                   download_url={download_url}
+                  id={id}
                 />
               </>
             )

@@ -4,6 +4,8 @@ import {
   Text,
   SafeAreaView,
   TouchableOpacity,
+  Image,
+  View,
 } from 'react-native';
 import colors from '../configs/colors';
 import { useNavigation } from '@react-navigation/core';
@@ -18,19 +20,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     marginVertical: 10,
-    backgroundColor: colors.darkBlue,
+    backgroundColor: 'transparent',
     borderRadius: 30,
     paddingHorizontal: 20,
   },
   text: {
     fontWeight: 'bold',
-    color: colors.freshWhite,
+    color: colors.midnightBlue,
     marginVertical: 10,
     fontSize: 20,
   },
 });
 
-const AuthorCard = ({ author, download_url }) => {
+const AuthorCard = ({ author, download_url, id }) => {
   const routes = { download_url, author }
   const navigation = useNavigation();
 
@@ -43,6 +45,13 @@ const AuthorCard = ({ author, download_url }) => {
             download_url,
             author,
           })}>
+          <View key={id}>
+            <Image 
+              source={{ uri: download_url }}
+              resizeMode="cover"
+              style={{ alignSelf: 'stretch', height: 200, width: 160, borderRadius: 20, borderWidth: 2 }}
+            />
+          </View>
           <Text style={styles.text}>
             {author}
           </Text>
