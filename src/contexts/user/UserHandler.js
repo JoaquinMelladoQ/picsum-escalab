@@ -8,12 +8,21 @@ export const UserContext = createContext();
 
 const UserHandler = ({ children }) => {
   const [photo, setPhoto] = useState('');
+  const [info, setInfo] = useState('');
+  const [web, setWeb] = useState('');
+  const [userName, setUserName] = useState('');
 
   return (
     <UserContext.Provider
       value={{
         photo,
-        setPhoto
+        setPhoto,
+        info,
+        setInfo,
+        web,
+        setWeb,
+        userName,
+        setUserName
       }}>
       {children}
     </UserContext.Provider>

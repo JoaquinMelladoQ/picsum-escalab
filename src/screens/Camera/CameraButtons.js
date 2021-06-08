@@ -51,19 +51,27 @@ const styles = StyleSheet.create({
 
 const CameraButtons = ({ toggleModalEditPhoto }) => {
   const navigation = useNavigation();
+  const navigateToCamera = () => {
+    toggleModalEditPhoto(false)
+    navigation.navigate('Camera')
+  };
+  const navigateToPhotoList = () => {
+    toggleModalEditPhoto(false)
+    navigation.navigate('PhotoList')
+  };
 
   return (
     <>
       <View style={styles.actionButtons}>
         <TouchableOpacity 
           style={styles.camButton}
-          onPress={() => navigation.navigate('Camera')}>
+          onPress={navigateToCamera}>
           <Icon size={20} style={styles.icon} name="camera"/>
           <Text style={styles.camTextButton}>Toma una foto</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.camButton}
-          onPress={() => navigation.navigate('PhotoList')}>
+          onPress={navigateToPhotoList}>
           <Icon size={20} style={styles.icon} name="upload"/>
           <Text style={styles.camTextButton}>Sube una foto</Text>
         </TouchableOpacity>
