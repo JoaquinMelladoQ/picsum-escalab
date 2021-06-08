@@ -16,14 +16,18 @@ import SearchAuthor from './SearchAuthor';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '0.5%',
-    padding: 20,
+    marginTop: '9%',
+    padding: 10,
+    marginLeft: '10%',
+    width: '100%',
+    paddingHorizontal: '5%',
+    marginHorizontal: '22%',
     borderRadius: 35,
-    marginHorizontal: 20,
-    backgroundColor: colors.midnightBlue,
-    borderWidth: 5,
+    backgroundColor: colors.marineBlue,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    zIndex: 1,
+    position: 'absolute',
   },
   button: {
     flexDirection: 'row',

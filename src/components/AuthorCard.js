@@ -13,13 +13,13 @@ import { useNavigation } from '@react-navigation/core';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.freshWhite,
+    backgroundColor: 'transparent',
   },
   containerText: {
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginVertical: 10,
+    marginVertical: 25,
     backgroundColor: 'transparent',
     borderRadius: 30,
     paddingHorizontal: 20,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
     color: colors.midnightBlue,
-    marginVertical: 10,
-    fontSize: 20,
+    marginVertical: 20,
+    fontSize: 25,
   },
 });
 
@@ -49,7 +49,12 @@ const AuthorCard = ({ author, download_url, id }) => {
             <Image 
               source={{ uri: download_url }}
               resizeMode="cover"
-              style={{ alignSelf: 'stretch', height: 200, width: 160, borderRadius: 20, borderWidth: 2 }}
+              style={{ 
+              alignSelf: 'stretch', 
+              height: 260, 
+              width: 170, 
+              borderRadius: 20, 
+              }}
             />
           </View>
           <Text style={styles.text}>

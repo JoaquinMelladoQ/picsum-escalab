@@ -26,6 +26,16 @@ const BottomNavigation = () => {
     <BottomTabs.Navigator
       tabBarOptions={{
         showLabel: false,
+        style: {
+          borderRadius: 30,
+          backgroundColor: colors.swanWhite,
+          marginBottom: 10,
+          padding: 5,
+          paddingBottom: '2%',
+          marginHorizontal: 25,
+          zIndex: 1,
+          position: 'absolute',
+        }
       }}
     >
       <BottomTabs.Screen 

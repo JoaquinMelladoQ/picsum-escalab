@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { 
   StyleSheet, 
-  FlatList,
   SafeAreaView,
 } from 'react-native';
 import AuthorCard from './AuthorCard';
@@ -27,7 +26,7 @@ export default class AuthorList extends Component {
         <MasonryList 
           numColumns={2}
           contentContainerStyle={{
-            paddingHorizontal: 30,
+            paddingHorizontal: 1,
             alignSelf: 'stretch'
           }}
           data={apiReducer}
