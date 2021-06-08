@@ -32,12 +32,12 @@ const Camera = () => {
   const navigation = useNavigation();
   const { photo, setPhoto } = useUserInformation();
 
-  const takePicture = async (camera) => {
+  const takePhotoFromCamera = async (camera) => {
     const options = { quality: 0.5, base64: true }
     const data = await camera.takePictureAsync(options);
     if (data.uri) {
       setPhoto(data.uri);
-      navigation.navigate('PhotoList');
+      navigation.navigate('Profile');
     }
   };
 
@@ -54,7 +54,7 @@ const Camera = () => {
             return (
               <CameraInterface 
                 camera={camera} 
-                takePicture={takePicture}
+                takePhotoFromCamera={takePhotoFromCamera}
               />
             )
           }

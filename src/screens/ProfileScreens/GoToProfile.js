@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   },
   confirmContainer: {
     justifyContent: 'center',
+    marginBottom: '22%',
   },
   confirmText: {
     marginLeft: '15%', 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     width: '13%',
     alignSelf: 'flex-end',
     margin: 20,
-    marginBottom: 30,
+    marginBottom: '30%',
   },
   buttonContainer: {
     justifyContent: 'flex-start',

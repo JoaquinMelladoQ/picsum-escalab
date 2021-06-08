@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     flex: 1,
-    paddingTop: 60,
+    paddingTop: 30,
     alignItems: 'center',
     backgroundColor: colors.freshWhite,
   },
@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textContainer: {
+    marginHorizontal: 10,
     paddingHorizontal: 10,
     paddingVertical: 20,
     backgroundColor: colors.freshWhite,
@@ -146,7 +147,10 @@ const LoginButton = () => {
           animationType="slide">
           <View style={styles.modal}>
             <Text style={styles.title}>Iniciar sesion</Text>
-            <Button title="Cerrar" onPress={() => toggleModal()} />
+            <TouchableOpacity 
+              onPress={() => toggleModal()}>
+              <Text>Cerrar</Text>
+            </TouchableOpacity>
             <KeyboardAwareScrollView extraScrollHeight={20}>
               { Platform.OS === 'android' ? 
                   (
@@ -178,13 +182,14 @@ const LoginButton = () => {
                   </Text>
                 </View>
                 </>
-              ) : null }
-              <View style={styles.textContainer}>
-                <Text 
-                  style={styles.text}>
-                    ingresa tu correo electronico y contraseña aqui: 
-                </Text>
-              </View>
+                  ) : (
+                <View style={styles.textContainer}>
+                  <Text 
+                    style={styles.text}>
+                      ingresa tu correo electronico y contraseña aqui: 
+                  </Text>
+                </View>
+              ) }
               <View style={styles.inputsContainer}>
                 <TextInput
                   placeholder="Correo electronico"

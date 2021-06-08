@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => (
     dispatch(fetchApi())
-  ), [])
+  ), []);
 
   return (
     <>

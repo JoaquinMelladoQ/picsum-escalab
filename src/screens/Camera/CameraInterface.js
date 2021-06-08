@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const CameraInterface = ({ camera, takePicture }) => {
+const CameraInterface = ({ camera, takePhotoFromCamera }) => {
   const navigation = useNavigation();
   return (
     <>
@@ -88,7 +88,7 @@ const CameraInterface = ({ camera, takePicture }) => {
           <View style={styles.bottomButtons}>
             <TouchableOpacity 
               style={styles.captureButtonContainer}
-              onPress={() => takePicture(camera)}>
+              onPress={() => takePhotoFromCamera(camera)}>
               <View style={styles.captureInnerButtonContainer} />
             </TouchableOpacity>
           </View>

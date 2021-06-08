@@ -35,7 +35,6 @@ export default class AuthorList extends Component {
             item: {
               download_url,
               author,
-              id
             }
           }) => {
             return (
@@ -44,7 +43,6 @@ export default class AuthorList extends Component {
                   color={color}
                   author={author}
                   download_url={download_url}
-                  id={id}
                 />
               </>
             )
