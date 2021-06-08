@@ -4,10 +4,13 @@ import {
   View, 
   Image,
   TouchableHighlight,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
 import colors from '../../configs/colors';
 import { useUserInformation } from '../../contexts/user/UserHandler';
 import { useNavigation } from '@react-navigation/core';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,16 +24,38 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 15,
   },
+  openGalleryContainer: {
+    backgroundColor: colors.summerSky, 
+    borderRadius: 25, 
+    padding: 5, 
+    marginTop: 10
+  },
+  textGallery: {
+    color: colors.freshWhite, 
+    fontSize: 18, 
+    fontWeight: 'bold',
+  },
 });
 
 const PhotoList = () => {
-  const { photo } = useUserInformation();
+  const { photo, setPhoto } = useUserInformation();
   const navigation = useNavigation();
+
+  const choosePhotoFromGallery = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 300,
+      cropping: true
+    }).then(image => {
+      setPhoto(image.path)
+      navigation.navigate('Profile')
+    });
+  };
   
   return (
     <View style={styles.container}>
       <TouchableHighlight 
-        onPress={() => navigation.navigate('Profile')}>
+        onPress={choosePhotoFromGallery}>
         { 
           photo ? (
           <Image 
@@ -45,6 +70,11 @@ const PhotoList = () => {
           )  
         }
       </TouchableHighlight>
+      <TouchableOpacity 
+        style={styles.openGalleryContainer}
+        onPress={choosePhotoFromGallery}>
+        <Text style={styles.textGallery}>Abrir galeria</Text>
+      </TouchableOpacity>
     </View>
   )
 };

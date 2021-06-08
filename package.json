@@ -25,6 +25,7 @@
     "react-native-camera": "^3.44.0",
     "react-native-flash-message": "^0.1.23",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-image-crop-picker": "^0.36.2",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-masonry-list": "^2.16.1",
     "react-native-reanimated": "^2.1.0",
