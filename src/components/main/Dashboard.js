@@ -17,12 +17,12 @@ import SearchAuthor from './SearchAuthor';
 const styles = StyleSheet.create({
   container: {
     marginTop: '9%',
-    padding: 10,
-    marginLeft: '10%',
-    width: '100%',
-    paddingHorizontal: '5%',
-    marginHorizontal: '22%',
-    borderRadius: 35,
+    padding: 25,
+    marginLeft: '20%',
+    width: '80%',
+    paddingHorizontal: '2%',
+    marginHorizontal: '25%',
+    borderRadius: 30,
     backgroundColor: colors.marineBlue,
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -73,7 +73,6 @@ const Dashboard = ({ apiReducer }) => {
                     name="account"
                     color={colors.freshWhite}
                   />
-                <Text style={styles.textButton}>Yo</Text>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity 
@@ -83,7 +82,6 @@ const Dashboard = ({ apiReducer }) => {
                     name="account"
                     color={colors.freshWhite}
                   />
-                <Text style={styles.textButton}>Yo</Text>
               </TouchableOpacity>
             )
           }
@@ -96,7 +94,6 @@ const Dashboard = ({ apiReducer }) => {
               name="search"
               color={colors.freshWhite}
             />
-            <Text style={styles.textButton}>Buscar</Text>
           </TouchableOpacity>
           <Modal
             transparent={true}
@@ -116,7 +113,6 @@ const Dashboard = ({ apiReducer }) => {
               name="logout"
               color={colors.freshWhite}
             />
-            <Text style={styles.textButton}>Salir</Text>
           </TouchableOpacity>
         </View>
       </View>

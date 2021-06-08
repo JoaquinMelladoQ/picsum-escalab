@@ -61,7 +61,11 @@ Auth screen:
 
 Main screen:
 
+<<<<<<< HEAD
 ![Mainscroll](./src/assets/main.png)
+=======
+![Mainscroll](./src/assets/mainfinal.png)
+>>>>>>> dev
 
 Photo screen:
 

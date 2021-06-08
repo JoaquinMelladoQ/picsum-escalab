@@ -77,16 +77,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonEditContainer: {
-    marginTop: 5,
+    marginTop: 10,
     backgroundColor: colors.summerSky,
-    padding: 5,
+    padding: 10,
     borderRadius: 25,
   },
   textEditButton: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: colors.darkBlue,
+    color: colors.freshWhite,
   },
 });
 
