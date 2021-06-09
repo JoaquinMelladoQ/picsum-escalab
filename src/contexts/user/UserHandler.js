@@ -60,7 +60,7 @@ const UserHandler = ({ children }) => {
 
 export default UserHandler;
 
-export const useUserInformation = () => {
+export const useUserData = () => {
   const context = useContext(UserContext);
 
   if (context === undefined) {

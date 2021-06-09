@@ -16,8 +16,9 @@ export default class AuthorList extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
+
     const { apiReducer, color } = this.props;
 
     return (

@@ -7,7 +7,7 @@ import { RNCamera } from 'react-native-camera';
 import colors from '../../configs/colors';
 import CameraInterface from './CameraInterface';
 import { useNavigation } from '@react-navigation/core';
-import { useUserInformation } from '../../contexts/user/UserHandler';
+import { useUserData } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 const Camera = () => {
   const navigation = useNavigation();
-  const { photo, setPhoto } = useUserInformation();
+  const { photo, setPhoto } = useUserData();
 
   const takePhotoFromCamera = async (camera) => {
     const options = { quality: 0.5, base64: true }

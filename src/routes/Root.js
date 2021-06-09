@@ -1,7 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { 
+  useContext, 
+  useState, 
+  useEffect 
+} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeNavigation from './HomeStack';
 import LoginNavigator from './LoginStack';
 import { AuthContext } from '../contexts/firebase/AuthProvider';
 import auth from '@react-native-firebase/auth';
@@ -46,4 +49,3 @@ const RootNavigation = () => {
 };
 
 export default RootNavigation;
-//            <RootStack.Screen name="HomeNavigator" component={HomeNavigation} /> 

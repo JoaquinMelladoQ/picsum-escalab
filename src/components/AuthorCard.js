@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { 
+  useState, 
+  useEffect, 
+  useCallback 
+} from 'react';
 import { 
   StyleSheet, 
   Text,
@@ -33,8 +37,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const AuthorCard = ({ author, download_url }) => {
+const AuthorCard = ({ 
+  author, 
+  download_url, 
+}) => {
+  const [validImage, setValidImage] = useState(true);
   const navigation = useNavigation();
+
+  const renderImage = useCallback(() => {
+    setValidImage(download_url)
+  });
+
+  useEffect(() => {
+    renderImage();
+  }, [])
 
   return (
     <>
@@ -45,9 +61,12 @@ const AuthorCard = ({ author, download_url }) => {
             download_url,
             author,
           })}>
-          <View>
+          <View> 
             <Image 
-              source={{ uri: download_url }}
+              source={ 
+              validImage 
+              ? { uri: download_url } 
+              : require('../assets/no-avatar.jpeg')}
               resizeMode="cover"
               style={{ 
               alignSelf: 'stretch', 
