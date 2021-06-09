@@ -17,7 +17,7 @@ import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import colors from '../../configs/colors';
 import DetailsProfile from './DetailsProfile';
 import ChangePhoto from '../Camera/ChangePhoto';
-import { useUserInformation } from '../../contexts/user/UserHandler';
+import { useUserData } from '../../contexts/user/UserHandler';
 import OptionButtons from './OptionButtons';
 
 const styles = StyleSheet.create({
@@ -99,7 +99,7 @@ const Profile = () => {
   const [modalPhoto, setModalPhoto] = useState(false);
   const { mainTheme, toggleDarkMode, darkModeEnabled } = useContext(ThemeContext);
   const { user: { photoURL } } = useContext(AuthContext);
-  const { photo, info, web, userName, getData } = useUserInformation();
+  const { photo, info, web, userName, getData } = useUserData();
 
   const toggleModal = () => setModal(!modal);
   const toggleModalEditPhoto = () => setModalPhoto(!modalPhoto);

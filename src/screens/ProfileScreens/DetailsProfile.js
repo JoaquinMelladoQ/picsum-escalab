@@ -9,7 +9,7 @@ import {
 import colors from '../../configs/colors';
 import { AuthContext } from '../../contexts/firebase/AuthProvider';
 import { useNavigation } from '@react-navigation/core';
-import { useUserInformation } from '../../contexts/user/UserHandler';
+import { useUserData } from '../../contexts/user/UserHandler';
 
 const styles = StyleSheet.create({
   container: {
@@ -55,7 +55,7 @@ const DetailsProfile = ({ toggleModal }) => {
     info,
     web,
     userName,
-  } = useUserInformation();
+  } = useUserData();
 
   const navigateFunction = () => {
     toggleModal(false)

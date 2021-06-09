@@ -8,7 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/core';
 import colors from '../../configs/colors'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useUserInformation } from '../../contexts/user/UserHandler';
+import { useUserData } from '../../contexts/user/UserHandler';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
 const GoToProfile = () => {
   const navigation = useNavigation();
-  const { info, web, userName } = useUserInformation();
+  const { info, web, userName } = useUserData();
 
   const confirmData = () => {
     navigation.navigate('Profile')

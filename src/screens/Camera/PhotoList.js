@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 import colors from '../../configs/colors';
-import { useUserInformation } from '../../contexts/user/UserHandler';
+import { useUserData } from '../../contexts/user/UserHandler';
 import { useNavigation } from '@react-navigation/core';
 import ImagePicker from 'react-native-image-crop-picker';
 
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 });
 
 const PhotoList = () => {
-  const { photo, setPhoto } = useUserInformation();
+  const { photo, setPhoto } = useUserData();
   const navigation = useNavigation();
 
   const choosePhotoFromGallery = () => {

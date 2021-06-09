@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { 
+  useContext, 
+  useState 
+} from 'react';
 import {
   TouchableOpacity,
   View,
-  Text,
   Modal,
   StyleSheet,
 } from 'react-native';
